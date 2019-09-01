@@ -23,18 +23,17 @@
         /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent() {
-            this.barcodeControl1 = new CartridgesManager.Controls.BarcodeControl();
+            this.mainControl1 = new CartridgesManager.Controls.MainControl();
             this.SuspendLayout();
             // 
-            // barcodeControl1
+            // mainControl1
             // 
-            this.barcodeControl1.BackColor = System.Drawing.Color.White;
-            this.barcodeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.barcodeControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.barcodeControl1.Location = new System.Drawing.Point(0, 0);
-            this.barcodeControl1.Name = "barcodeControl1";
-            this.barcodeControl1.Size = new System.Drawing.Size(1204, 702);
-            this.barcodeControl1.TabIndex = 0;
+            this.mainControl1.BackColor = System.Drawing.Color.White;
+            this.mainControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainControl1.Location = new System.Drawing.Point(0, 0);
+            this.mainControl1.Name = "mainControl1";
+            this.mainControl1.Size = new System.Drawing.Size(1204, 702);
+            this.mainControl1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -42,7 +41,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1204, 702);
-            this.Controls.Add(this.barcodeControl1);
+            this.Controls.Add(this.mainControl1);
             this.MinimumSize = new System.Drawing.Size(1220, 740);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -54,7 +53,7 @@
 
         #endregion
 
-        private Controls.BarcodeControl barcodeControl1;
+        private Controls.MainControl mainControl1;
     }
 }
 
