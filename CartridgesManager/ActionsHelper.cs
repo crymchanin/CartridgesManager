@@ -1,12 +1,25 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 
 /// <summary>
 /// Управляющие перечисления программы
 /// </summary>
 namespace CartridgesManager {
     public static class ActionsHelper {
+
+        /// <summary>
+        /// Включен или отключен полноэкранный режим
+        /// </summary>
+        private static bool IsFullScreen { get; set; }
+
+        /// <summary>
+        /// Служебный параметр
+        /// </summary>
+        private static FormWindowState OldState { get; set; } = FormWindowState.Normal;
+
+
         /// <summary>
         /// Основные действия в программе
         /// </summary>
@@ -26,7 +39,33 @@ namespace CartridgesManager {
             /// <summary>
             /// Просмотр картриджей отделения
             /// </summary>
-            PostOfficeInfo = 90000000000004
+            PostOfficeInfo = 90000000000004,
+            /// <summary>
+            /// Открыть смену
+            /// </summary>
+            NewSession = 91000000000001,
+            /// <summary>
+            /// Закрыть смену
+            /// </summary>
+            CloseSession = 91000000000002,
+            /// <summary>
+            /// Полноэкранный режим
+            /// </summary>
+            FullScreen = 92000000000001,
+            /// <summary>
+            /// Выйти из приложения
+            /// </summary>
+            ExitApplication = 92000000000002
+        }
+
+        /// <summary>
+        /// Действия с GUI приложения
+        /// </summary>
+        public enum GuiActions : long {
+            /// <summary>
+            /// Кнопка закрытия
+            /// </summary>
+            CloseButton = 99000000000001
         }
 
         /// <summary>
@@ -49,6 +88,28 @@ namespace CartridgesManager {
                 Where(t => t.IsEnum && Enum.IsDefined(t, code)).FirstOrDefault();
 
             return type;
+        }
+
+        /// <summary>
+        /// Выполняет выход из данного приложения
+        /// </summary>
+        public static void ExitApplication() {
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// Включает либо выключает полноэкранный режим
+        /// </summary>
+        /// <param name="form"></param>
+        public static void SwitchFullScreenMode(this MainForm form) {
+            if (!IsFullScreen) {
+                OldState = form.WindowState;
+                form.WindowState = FormWindowState.Normal;
+            }
+            IsFullScreen = !IsFullScreen;
+
+            form.FormBorderStyle = (IsFullScreen) ? FormBorderStyle.None : FormBorderStyle.FixedSingle;
+            form.WindowState = (IsFullScreen) ? FormWindowState.Maximized : OldState;
         }
     }
 }

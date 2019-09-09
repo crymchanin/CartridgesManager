@@ -42,7 +42,7 @@
             this.PartCountHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.WorkerNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CommentHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CloseTabButton = new System.Windows.Forms.Button();
+            this.CloseTabButton = new CartridgesManager.Controls.ButtonWithBarcode();
             this.SuspendLayout();
             // 
             // NumberLabel
@@ -213,13 +213,16 @@
             // CloseTabButton
             // 
             this.CloseTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CloseTabButton.Location = new System.Drawing.Point(28, 742);
+            this.CloseTabButton.BackColor = System.Drawing.Color.White;
+            this.CloseTabButton.Barcode = "";
+            this.CloseTabButton.ButtonBackColor = System.Drawing.Color.LightSkyBlue;
+            this.CloseTabButton.ButtonImage = global::CartridgesManager.Properties.Resources.remove_64;
+            this.CloseTabButton.ButtonText = "Закрыть окно";
+            this.CloseTabButton.Location = new System.Drawing.Point(29, 557);
+            this.CloseTabButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.CloseTabButton.Name = "CloseTabButton";
-            this.CloseTabButton.Size = new System.Drawing.Size(140, 30);
-            this.CloseTabButton.TabIndex = 0;
-            this.CloseTabButton.Text = "Закрыть";
-            this.CloseTabButton.UseVisualStyleBackColor = true;
-            this.CloseTabButton.Click += new System.EventHandler(this.CloseTabButton_Click);
+            this.CloseTabButton.Size = new System.Drawing.Size(207, 215);
+            this.CloseTabButton.TabIndex = 2;
             // 
             // ShowCartridgeInfo
             // 
@@ -270,6 +273,6 @@
         private System.Windows.Forms.ColumnHeader PartCountHeader;
         private System.Windows.Forms.ColumnHeader WorkerNameHeader;
         private System.Windows.Forms.ColumnHeader CommentHeader;
-        private System.Windows.Forms.Button CloseTabButton;
+        private ButtonWithBarcode CloseTabButton;
     }
 }

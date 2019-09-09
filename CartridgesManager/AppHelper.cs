@@ -37,6 +37,11 @@ namespace CartridgesManager {
         /// </summary>
         public static Log Log { get; set; }
 
+        /// <summary>
+        /// Штрихкод
+        /// </summary>
+        public static string Barcode { get; set; } = string.Empty;
+
 
         /// <summary>
         /// Создает сообщение, которое можно записать в лог, вывести в окне и отправить по почте

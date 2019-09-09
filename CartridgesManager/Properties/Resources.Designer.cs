@@ -73,9 +73,39 @@ namespace CartridgesManager.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clock_32 {
+            get {
+                object obj = ResourceManager.GetObject("clock_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_64 {
             get {
                 object obj = ResourceManager.GetObject("close_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fullscreen_64 {
+            get {
+                object obj = ResourceManager.GetObject("fullscreen_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_64 {
+            get {
+                object obj = ResourceManager.GetObject("remove_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +136,16 @@ namespace CartridgesManager.Properties {
         internal static System.Drawing.Bitmap service_64 {
             get {
                 object obj = ResourceManager.GetObject("service_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shutdown_64 {
+            get {
+                object obj = ResourceManager.GetObject("shutdown_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

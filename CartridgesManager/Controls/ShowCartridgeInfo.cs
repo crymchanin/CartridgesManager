@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace CartridgesManager.Controls {
     public partial class ShowCartridgeInfo : UserControl {
+
         public ShowCartridgeInfo(long code, CartridgeInfo cartridgeInfo) {
             try {
                 InitializeComponent();
@@ -27,14 +28,19 @@ namespace CartridgesManager.Controls {
                     items.Add(item);
                 }
                 OpertionsBox.Items.AddRange(items.ToArray());
+
+                GuiController.ControlCallback callback = delegate () {
+                    CloseTabButton.UnregisterControl(CloseTabButton.Barcode);
+                    Dispose();
+                };
+                CloseTabButton.Barcode = CloseTabButton.RegisterControl(callback);
+                CloseTabButton.ButtonClick += delegate (object s, EventArgs e) {
+                    callback.Invoke();
+                };
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void CloseTabButton_Click(object sender, EventArgs e) {
-            Dispose();
         }
     }
 }

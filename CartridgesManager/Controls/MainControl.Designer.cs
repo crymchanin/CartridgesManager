@@ -23,132 +23,143 @@
         /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent() {
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button = new System.Windows.Forms.Button();
+            this.ViewInfoButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.AddNewCartridgeButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.ServiceButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.NewSessionButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.MainBarcodeBox = new CartridgesManager.Controls.BarcodeBox();
+            this.ViewCartridgesButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.CloseSessionButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.FullScreenButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.ExitButton = new CartridgesManager.Controls.ButtonWithBarcode();
             this.SuspendLayout();
             // 
-            // button5
+            // ViewInfoButton
             // 
-            this.button5.BackColor = System.Drawing.Color.DimGray;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button5.FlatAppearance.BorderSize = 2;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = global::CartridgesManager.Properties.Resources.cartridge_64;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(730, 25);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 160);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Просмотр информации о картридже";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button5.UseVisualStyleBackColor = false;
+            this.ViewInfoButton.BackColor = System.Drawing.Color.White;
+            this.ViewInfoButton.Barcode = "";
+            this.ViewInfoButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ViewInfoButton.ButtonImage = global::CartridgesManager.Properties.Resources.cartridge_64;
+            this.ViewInfoButton.ButtonText = "Просмотр информации о картридже";
+            this.ViewInfoButton.Location = new System.Drawing.Point(730, 25);
+            this.ViewInfoButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.ViewInfoButton.Name = "ViewInfoButton";
+            this.ViewInfoButton.Size = new System.Drawing.Size(207, 215);
+            this.ViewInfoButton.TabIndex = 4;
             // 
-            // button6
+            // AddNewCartridgeButton
             // 
-            this.button6.BackColor = System.Drawing.Color.DimGray;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.BorderSize = 2;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Image = global::CartridgesManager.Properties.Resources.send_64;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button6.Location = new System.Drawing.Point(493, 25);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(200, 160);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Выдать картридж\r\n ";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button6.UseVisualStyleBackColor = false;
+            this.AddNewCartridgeButton.BackColor = System.Drawing.Color.White;
+            this.AddNewCartridgeButton.Barcode = "";
+            this.AddNewCartridgeButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.AddNewCartridgeButton.ButtonImage = global::CartridgesManager.Properties.Resources.send_64;
+            this.AddNewCartridgeButton.ButtonText = "Добавить новый картридж";
+            this.AddNewCartridgeButton.Location = new System.Drawing.Point(493, 25);
+            this.AddNewCartridgeButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.AddNewCartridgeButton.Name = "AddNewCartridgeButton";
+            this.AddNewCartridgeButton.Size = new System.Drawing.Size(207, 215);
+            this.AddNewCartridgeButton.TabIndex = 3;
             // 
-            // button4
+            // ServiceButton
             // 
-            this.button4.BackColor = System.Drawing.Color.DimGray;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button4.FlatAppearance.BorderSize = 2;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = global::CartridgesManager.Properties.Resources.close_64;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(262, 220);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 160);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Закрыть смену\r\n ";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button4.UseVisualStyleBackColor = false;
+            this.ServiceButton.BackColor = System.Drawing.Color.White;
+            this.ServiceButton.Barcode = "";
+            this.ServiceButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ServiceButton.ButtonImage = global::CartridgesManager.Properties.Resources.service_64;
+            this.ServiceButton.ButtonText = "Обслуживание картриджа";
+            this.ServiceButton.Location = new System.Drawing.Point(262, 25);
+            this.ServiceButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.ServiceButton.Name = "ServiceButton";
+            this.ServiceButton.Size = new System.Drawing.Size(207, 215);
+            this.ServiceButton.TabIndex = 1;
             // 
-            // button3
+            // NewSessionButton
             // 
-            this.button3.BackColor = System.Drawing.Color.DimGray;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button3.FlatAppearance.BorderSize = 2;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::CartridgesManager.Properties.Resources.service_64;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(262, 25);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 160);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Обслуживание картриджа\r\n ";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button3.UseVisualStyleBackColor = false;
+            this.NewSessionButton.BackColor = System.Drawing.Color.White;
+            this.NewSessionButton.Barcode = "";
+            this.NewSessionButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.NewSessionButton.ButtonImage = global::CartridgesManager.Properties.Resources.worker_64;
+            this.NewSessionButton.ButtonText = "Открыть смену";
+            this.NewSessionButton.Location = new System.Drawing.Point(25, 25);
+            this.NewSessionButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.NewSessionButton.Name = "NewSessionButton";
+            this.NewSessionButton.Size = new System.Drawing.Size(207, 215);
+            this.NewSessionButton.TabIndex = 0;
             // 
-            // button2
+            // MainBarcodeBox
             // 
-            this.button2.BackColor = System.Drawing.Color.DimGray;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::CartridgesManager.Properties.Resources.search_64;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(25, 220);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 160);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Просмотр картриджей на отделении";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button2.UseVisualStyleBackColor = false;
+            this.MainBarcodeBox.BackColor = System.Drawing.Color.White;
+            this.MainBarcodeBox.Location = new System.Drawing.Point(259, 571);
+            this.MainBarcodeBox.Name = "MainBarcodeBox";
+            this.MainBarcodeBox.Size = new System.Drawing.Size(450, 80);
+            this.MainBarcodeBox.TabIndex = 16;
+            this.MainBarcodeBox.Visible = false;
             // 
-            // button
+            // ViewCartridgesButton
             // 
-            this.button.BackColor = System.Drawing.Color.DimGray;
-            this.button.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button.FlatAppearance.BorderSize = 2;
-            this.button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button.ForeColor = System.Drawing.Color.White;
-            this.button.Image = global::CartridgesManager.Properties.Resources.worker_64;
-            this.button.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button.Location = new System.Drawing.Point(25, 25);
-            this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(200, 160);
-            this.button.TabIndex = 0;
-            this.button.Text = "Открыть смену\r\n ";
-            this.button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.button.UseVisualStyleBackColor = false;
+            this.ViewCartridgesButton.BackColor = System.Drawing.Color.White;
+            this.ViewCartridgesButton.Barcode = "";
+            this.ViewCartridgesButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ViewCartridgesButton.ButtonImage = global::CartridgesManager.Properties.Resources.search_64;
+            this.ViewCartridgesButton.ButtonText = "Просмотр картриджей на отделении";
+            this.ViewCartridgesButton.Location = new System.Drawing.Point(25, 291);
+            this.ViewCartridgesButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.ViewCartridgesButton.Name = "ViewCartridgesButton";
+            this.ViewCartridgesButton.Size = new System.Drawing.Size(207, 215);
+            this.ViewCartridgesButton.TabIndex = 5;
+            // 
+            // CloseSessionButton
+            // 
+            this.CloseSessionButton.BackColor = System.Drawing.Color.White;
+            this.CloseSessionButton.Barcode = "";
+            this.CloseSessionButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.CloseSessionButton.ButtonImage = global::CartridgesManager.Properties.Resources.close_64;
+            this.CloseSessionButton.ButtonText = "Закрытие смены";
+            this.CloseSessionButton.Location = new System.Drawing.Point(262, 291);
+            this.CloseSessionButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.CloseSessionButton.Name = "CloseSessionButton";
+            this.CloseSessionButton.Size = new System.Drawing.Size(207, 215);
+            this.CloseSessionButton.TabIndex = 6;
+            // 
+            // FullScreenButton
+            // 
+            this.FullScreenButton.BackColor = System.Drawing.Color.White;
+            this.FullScreenButton.Barcode = "";
+            this.FullScreenButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.FullScreenButton.ButtonImage = global::CartridgesManager.Properties.Resources.fullscreen_64;
+            this.FullScreenButton.ButtonText = "Полноэкранный режим (вкл/выкл)";
+            this.FullScreenButton.Location = new System.Drawing.Point(493, 291);
+            this.FullScreenButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.FullScreenButton.Name = "FullScreenButton";
+            this.FullScreenButton.Size = new System.Drawing.Size(207, 215);
+            this.FullScreenButton.TabIndex = 7;
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.BackColor = System.Drawing.Color.White;
+            this.ExitButton.Barcode = "";
+            this.ExitButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ExitButton.ButtonImage = global::CartridgesManager.Properties.Resources.shutdown_64;
+            this.ExitButton.ButtonText = "Выйти из программы";
+            this.ExitButton.Location = new System.Drawing.Point(730, 291);
+            this.ExitButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(207, 215);
+            this.ExitButton.TabIndex = 8;
             // 
             // MainControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button);
+            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.FullScreenButton);
+            this.Controls.Add(this.CloseSessionButton);
+            this.Controls.Add(this.ViewCartridgesButton);
+            this.Controls.Add(this.ViewInfoButton);
+            this.Controls.Add(this.AddNewCartridgeButton);
+            this.Controls.Add(this.ServiceButton);
+            this.Controls.Add(this.NewSessionButton);
+            this.Controls.Add(this.MainBarcodeBox);
             this.Name = "MainControl";
             this.Size = new System.Drawing.Size(966, 740);
             this.ResumeLayout(false);
@@ -156,12 +167,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private BarcodeBox MainBarcodeBox;
+        private ButtonWithBarcode NewSessionButton;
+        private ButtonWithBarcode ServiceButton;
+        private ButtonWithBarcode AddNewCartridgeButton;
+        private ButtonWithBarcode ViewInfoButton;
+        private ButtonWithBarcode ViewCartridgesButton;
+        private ButtonWithBarcode CloseSessionButton;
+        private ButtonWithBarcode FullScreenButton;
+        private ButtonWithBarcode ExitButton;
     }
 }
