@@ -87,7 +87,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Картриджи";
             this.BarcodeReaded += new CartridgesManager.BarcodeForm.BarcodeReadedEventHandler(this.MainForm_BarcodeReaded);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.MainStrip.ResumeLayout(false);
             this.MainStrip.PerformLayout();
             this.ResumeLayout(false);

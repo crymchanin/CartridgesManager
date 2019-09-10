@@ -48,6 +48,8 @@
             this.BarcodeTextBox.TabIndex = 0;
             this.BarcodeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BarcodeTextBox.TextChanged += new System.EventHandler(this.BarcodeTextBox_TextChanged);
+            this.BarcodeTextBox.Enter += new System.EventHandler(this.BarcodeTextBox_Enter);
+            this.BarcodeTextBox.Leave += new System.EventHandler(this.BarcodeTextBox_Leave);
             // 
             // BarcodeBox
             // 

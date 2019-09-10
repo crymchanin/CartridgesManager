@@ -10,6 +10,8 @@ namespace CartridgesManager.Controls {
             try {
                 InitializeComponent();
 
+                GuiController.IsMainActionsAllowed = false;
+
                 NumberBox.Text = code.ToString();
                 ModelBox.Text = cartridgeInfo.ModelName;
                 LocationBox.Text = cartridgeInfo.Location;
@@ -30,8 +32,8 @@ namespace CartridgesManager.Controls {
                 OpertionsBox.Items.AddRange(items.ToArray());
 
                 GuiController.ControlCallback callback = delegate () {
-                    CloseTabButton.UnregisterControl(CloseTabButton.Barcode);
-                    Dispose();
+                    CloseTabButton.UnregisterControl();
+                    this.NavigateToMainPage();
                 };
                 CloseTabButton.Barcode = CloseTabButton.RegisterControl(callback);
                 CloseTabButton.ButtonClick += delegate (object s, EventArgs e) {
@@ -39,6 +41,7 @@ namespace CartridgesManager.Controls {
                 };
             }
             catch (Exception ex) {
+                GuiController.IsMainActionsAllowed = true;
                 MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

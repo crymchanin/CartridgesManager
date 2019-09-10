@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BarcodeLib;
 
 
 namespace CartridgesManager.Controls {
@@ -18,7 +10,10 @@ namespace CartridgesManager.Controls {
 
             NewSessionButton.Barcode = ((long)ActionsHelper.MainActions.NewSession).ToString();
             NewSessionButton.ButtonClick += delegate (object s, EventArgs e) {
-                // Открытие смены здесь
+                UserSelect ctrl = new UserSelect();
+                ctrl.Dock = DockStyle.Fill;
+                Parent.Controls.Add(ctrl);
+                ctrl.BringToFront();
             };
             ServiceButton.Barcode = ((long)ActionsHelper.MainActions.ServiceCartridge).ToString();
             ServiceButton.ButtonClick += delegate (object s, EventArgs e) {
@@ -46,7 +41,7 @@ namespace CartridgesManager.Controls {
             };
             ExitButton.Barcode = ((long)ActionsHelper.MainActions.ExitApplication).ToString();
             ExitButton.ButtonClick += delegate (object s, EventArgs e) {
-                ActionsHelper.ExitApplication();
+                GuiController.ExitApplication();
             };
 
             MainBarcodeBox.BarcodeEndRead += BarcodeBox1_BarcodeEndRead;

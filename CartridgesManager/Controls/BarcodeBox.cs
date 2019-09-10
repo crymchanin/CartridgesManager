@@ -18,6 +18,27 @@ namespace CartridgesManager.Controls {
         public event BarcodeEndReadEventHandler BarcodeEndRead;
 
         /// <summary>
+        /// Представляет метод, обрабатывающий событие BarcodeBoxLostFocus
+        /// </summary>
+        public delegate void BarcodeBoxLostFocusEventHandler();
+
+        /// <summary>
+        /// Происходит при потере фокуса элементом управления
+        /// </summary>
+        public event BarcodeBoxLostFocusEventHandler BarcodeBoxLostFocus;
+
+        /// <summary>
+        /// Представляет метод, обрабатывающий событие BarcodeBoxGotFocus
+        /// </summary>
+        public delegate void BarcodeBoxGotFocusEventHandler();
+
+        /// <summary>
+        /// Вызывается при получении фокуса элементом управления.
+        /// </summary>
+        public event BarcodeBoxGotFocusEventHandler BarcodeBoxGotFocus;
+
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         public BarcodeBox() {
@@ -43,10 +64,21 @@ namespace CartridgesManager.Controls {
         }
 
         private void BarcodeTextBox_TextChanged(object sender, EventArgs e) {
-            if (BarcodeTextBox.Text.Length == 14) {
+            if (BarcodeTextBox.Text.Length == 14 && Visible) {
                 BarcodeEndRead?.Invoke(Barcode);
                 BarcodeTextBox.SelectAll();
             }
+        }
+
+        private void BarcodeTextBox_Leave(object sender, EventArgs e) {
+            BarcodeBoxLostFocus?.Invoke();
+            if (Visible) {
+                BarcodeTextBox.Focus();
+            }
+        }
+
+        private void BarcodeTextBox_Enter(object sender, EventArgs e) {
+            BarcodeBoxGotFocus?.Invoke();
         }
     }
 }

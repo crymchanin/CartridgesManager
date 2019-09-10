@@ -23,6 +23,7 @@ namespace CartridgesManager.Configuration {
         /// <summary>
         /// Список пользователей
         /// </summary>
+        [DataMember]
         public List<string> Users { get; set; }
 
         /// <summary>

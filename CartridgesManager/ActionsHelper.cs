@@ -1,24 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Windows.Forms;
 
-/// <summary>
-/// Управляющие перечисления программы
-/// </summary>
+
 namespace CartridgesManager {
     public static class ActionsHelper {
-
-        /// <summary>
-        /// Включен или отключен полноэкранный режим
-        /// </summary>
-        private static bool IsFullScreen { get; set; }
-
-        /// <summary>
-        /// Служебный параметр
-        /// </summary>
-        private static FormWindowState OldState { get; set; } = FormWindowState.Normal;
-
 
         /// <summary>
         /// Основные действия в программе
@@ -59,16 +45,6 @@ namespace CartridgesManager {
         }
 
         /// <summary>
-        /// Действия с GUI приложения
-        /// </summary>
-        public enum GuiActions : long {
-            /// <summary>
-            /// Кнопка закрытия
-            /// </summary>
-            CloseButton = 99000000000001
-        }
-
-        /// <summary>
         /// Проверяет код на принадлежнойсть к сервисным кодам
         /// </summary>
         /// <param name="code">Проверяемый код</param>
@@ -88,28 +64,6 @@ namespace CartridgesManager {
                 Where(t => t.IsEnum && Enum.IsDefined(t, code)).FirstOrDefault();
 
             return type;
-        }
-
-        /// <summary>
-        /// Выполняет выход из данного приложения
-        /// </summary>
-        public static void ExitApplication() {
-            Application.Exit();
-        }
-
-        /// <summary>
-        /// Включает либо выключает полноэкранный режим
-        /// </summary>
-        /// <param name="form"></param>
-        public static void SwitchFullScreenMode(this MainForm form) {
-            if (!IsFullScreen) {
-                OldState = form.WindowState;
-                form.WindowState = FormWindowState.Normal;
-            }
-            IsFullScreen = !IsFullScreen;
-
-            form.FormBorderStyle = (IsFullScreen) ? FormBorderStyle.None : FormBorderStyle.FixedSingle;
-            form.WindowState = (IsFullScreen) ? FormWindowState.Maximized : OldState;
         }
     }
 }

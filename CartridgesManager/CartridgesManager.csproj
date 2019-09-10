@@ -100,6 +100,12 @@
     <Compile Include="Controls\ShowCartridgeInfo.Designer.cs">
       <DependentUpon>ShowCartridgeInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UserSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserSelect.Designer.cs">
+      <DependentUpon>UserSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="GuiController.cs" />
     <Compile Include="MainForm.cs">
@@ -126,6 +132,9 @@
     <EmbeddedResource Include="Controls\ShowCartridgeInfo.resx">
       <DependentUpon>ShowCartridgeInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserSelect.resx">
+      <DependentUpon>UserSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +159,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="settings.conf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -176,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Images\sad_64.png" />
     <None Include="Images\remove_64.png" />
     <None Include="Images\shutdown_64.png" />
   </ItemGroup>
