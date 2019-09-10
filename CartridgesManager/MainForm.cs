@@ -1,12 +1,13 @@
-﻿using CartridgesManager.Controls;
-using Feodosiya.Lib.Threading;
+﻿using Feodosiya.Lib.Threading;
 using System;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 
 namespace CartridgesManager {
 
-    public partial class MainForm : BarcodeForm {
+    public partial class MainForm : Form {
 
         private System.Threading.Timer ClockTimer;
 
@@ -16,70 +17,61 @@ namespace CartridgesManager {
 
             GuiController.MainForm = this;
 
-            if (AppHelper.Configuration.RunInFullScreen) {
-                this.SwitchFullScreenMode();
-            }
-
             try {
+                // Запускаем таймер для отображения часов
                 ClockTimer = new System.Threading.Timer(delegate (object s) {
                     try {
                         MainStrip.InvokeIfRequired(() => TimeStripLabel.Text = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"));
                     }
                     catch { }
                 }, null, 0, 300);
+
+                if (AppHelper.Configuration.RunInFullScreen) {
+                    this.SwitchFullScreenMode();
+                }
+
+                // Начинаем прослушивать COM порт
+                AppHelper.ComListener = new ComListener(AppHelper.Configuration.BarcodeScanner.ComPort,
+                    AppHelper.Configuration.BarcodeScanner.BaudRate);
+                AppHelper.ComListener.BarcodeReaded += BarcodeReaded;
+                AppHelper.ComListener.Listen();
+
+                // Если смена была ранее открыта, то возобновляем её
+                if (!string.IsNullOrEmpty(AppHelper.Configuration.SessionUserName)) {
+                    if (!SessionManager.CreateNewSession(AppHelper.Configuration.SessionUserName)) {
+                        GuiController.CreateMessage("Не удалось возобновить смену. Проверьте конфигурационный файл", true);
+                    }
+                    else {
+                        GuiController.CreateMessage("Возобновлена смена под пользователем " + SessionManager.WorkerName, false);
+                    }
+                }
+
+                /*PrivateFontCollection fontCollection = new PrivateFontCollection();
+                fontCollection.AddFontFile(@".\Fonts\Century-Gothic.ttf");
+                FontFamily fontFamily = new FontFamily("Century Gothic", fontCollection);
+                Font = new Font(fontFamily, 8);*/
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Load += (s, e) => GuiController.ExitApplication();
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-            string strCode = "90000000000001";
-
-            if (strCode.Length == 14) {
-                //BarcodeTextBox.SelectAll();
-
-                try {
-                    long code = long.Parse(strCode);
-                    if (ActionsHelper.IsServiceCode(code)) {
-                        switch (code) {
-                            case (long)ActionsHelper.MainActions.CartridgeInfo:
-                                CartridgeInfo cartridgeInfo = DatabaseHelper.GetCartridgeInfo(long.Parse("29810021067228"));
-                                ShowCartridgeInfo ctrl = new ShowCartridgeInfo(long.Parse("29810021067228"), cartridgeInfo);
-                                ctrl.Dock = DockStyle.Fill;
-                                Controls.Add(ctrl);
-                                ctrl.BringToFront();
-                                break;
-                            case (long)ActionsHelper.MainActions.AddNewCartridge:
-                                break;
-                            case (long)ActionsHelper.MainActions.ServiceCartridge:
-                                break;
-                            case (long)ActionsHelper.MainActions.PostOfficeInfo:
-                                break;
-                        }
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-        }
-
-        private void MainForm_BarcodeReaded(string code) {
+        private void BarcodeReaded(string code) {
             try {
+                GuiController.CreateMessage("", false);
+
                 long lCode = long.Parse(code);
                 if (ActionsHelper.IsServiceCode(lCode) && GuiController.IsMainActionsAllowed) {
                     switch (lCode) {
                         case (long)ActionsHelper.MainActions.NewSession:
-                            UserSelect ctrl = new UserSelect();
-                            ctrl.Dock = DockStyle.Fill;
-                            Controls.Add(ctrl);
-                            ctrl.BringToFront();
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.CloseSession:
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.CartridgeInfo:
-                            mainControl1.ShowBarcodeBox(true);
+                            mainControl1.ShowBarcodeBox(true); // !!!!!
                             break;
                         case (long)ActionsHelper.MainActions.AddNewCartridge:
                             break;
@@ -88,10 +80,10 @@ namespace CartridgesManager {
                         case (long)ActionsHelper.MainActions.PostOfficeInfo:
                             break;
                         case (long)ActionsHelper.MainActions.FullScreen:
-                            this.SwitchFullScreenMode();
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.ExitApplication:
-                            GuiController.ExitApplication();
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         default:
                             break;

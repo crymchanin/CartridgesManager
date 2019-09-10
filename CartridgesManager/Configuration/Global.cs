@@ -27,17 +27,29 @@ namespace CartridgesManager.Configuration {
         public List<string> Users { get; set; }
 
         /// <summary>
+        /// Имя пользователя открывшего смену
+        /// </summary>
+        [DataMember]
+        public string SessionUserName { get; set; }
+
+        /// <summary>
         /// Параметры подключения к БД
         /// </summary>
         [DataMember]
         public Sql Sql { get; set; }
 
+        /// <summary>
+        /// Параметры сканера штрихкодов
+        /// </summary>
+        [DataMember]
+        public BarcodeScanner BarcodeScanner { get; set; }
+
 
         [OnDeserialized]
         public void OnDeserialized(StreamingContext ctx) {
-            if (Users == null) {
-                Users = new List<string>();
-            }
+            Users = (Users == null) ? new List<string>() : Users;
+            Sql = (Sql == null) ? new Sql() : Sql;
+            BarcodeScanner = (BarcodeScanner == null) ? new BarcodeScanner() : BarcodeScanner;
         }
     }
 }

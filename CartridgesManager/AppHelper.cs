@@ -38,9 +38,10 @@ namespace CartridgesManager {
         public static Log Log { get; set; }
 
         /// <summary>
-        /// Штрихкод
+        /// Прослушиватель COM порта
         /// </summary>
-        public static string Barcode { get; set; } = string.Empty;
+        public static ComListener ComListener { get; set; }
+
 
 
         /// <summary>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CartridgesManager.Controls;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,10 +22,11 @@ namespace CartridgesManager {
         /// </summary>
         private static FormWindowState OldState { get; set; } = FormWindowState.Normal;
 
-        private static Dictionary<string, Control> ControlsDictionary { get; set; } = new Dictionary<string, Control>();
+        private static Dictionary<string, ButtonWithBarcode> ControlsDictionary { get; set; } = new Dictionary<string, ButtonWithBarcode>();
         private static Dictionary<string, ControlCallback> ControlsCallbacks { get; set; } = new Dictionary<string, ControlCallback>();
 
-        public delegate void ControlCallback();
+        public delegate void ControlCallback(string code);
+
 
         /// <summary>
         /// Возвращает или задает состояние доступности выполнения основных действий программы
@@ -52,7 +55,7 @@ namespace CartridgesManager {
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        private static string GetCode(Control control) {
+        private static string GetCode(ButtonWithBarcode control) {
             return ControlsDictionary.FirstOrDefault(x => x.Value.GetHashCode() == control.GetHashCode()).Key;
         }
 
@@ -62,13 +65,16 @@ namespace CartridgesManager {
         /// <param name="control"></param>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public static string RegisterControl(this Control control, ControlCallback callback) {
+        public static string RegisterControl(this ButtonWithBarcode control, ControlCallback callback) {
             string strCode = GenerateCode().ToString();
             while (ControlsDictionary.ContainsKey(strCode)) {
                 strCode = GenerateCode().ToString();
             }
             ControlsDictionary.Add(strCode, control);
             ControlsCallbacks.Add(strCode, callback);
+            (control as ButtonWithBarcode).ButtonClick += (s, e) =>
+                callback.Invoke(strCode);
+            ;
 
             return strCode;
         }
@@ -77,9 +83,31 @@ namespace CartridgesManager {
         /// 
         /// </summary>
         /// <param name="control"></param>
-        public static void UnregisterControl(this Control control) {
+        /// <param name="code"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public static string RegisterControl(this ButtonWithBarcode control, long code, ControlCallback callback) {
+            string strCode = code.ToString();
+            if (ControlsDictionary.ContainsKey(strCode)) {
+                throw new ArgumentException("Элемент с кодом '" + strCode + "' уже зарегистрирован");
+            }
+
+            ControlsDictionary.Add(strCode, control);
+            ControlsCallbacks.Add(strCode, callback);
+            (control as ButtonWithBarcode).ButtonClick += (s, e) =>
+                callback.Invoke(strCode);
+            ;
+
+            return strCode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="control"></param>
+        public static void UnregisterControl(this ButtonWithBarcode control) {
             string code = GetCode(control);
-            if (string.IsNullOrEmpty(code)) {
+            if (!string.IsNullOrEmpty(code)) {
                 ControlsDictionary.Remove(code);
                 ControlsCallbacks.Remove(code);
             }
@@ -90,7 +118,7 @@ namespace CartridgesManager {
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static Control GetAssociatedControl(string code) {
+        public static ButtonWithBarcode GetAssociatedControl(string code) {
             if (!ControlsDictionary.ContainsKey(code)) {
                 throw new ArgumentException("Элемент с кодом '" + code + "' не зарегистрирован");
             }
@@ -102,12 +130,23 @@ namespace CartridgesManager {
         /// 
         /// </summary>
         /// <param name="code"></param>
+        /// <param name="args"></param>
         public static void InvokeAssociatedCallback(string code) {
             if (!ControlsCallbacks.ContainsKey(code)) {
                 throw new ArgumentException("Функция обратного вызова с кодом '" + code + "' не зарегестрирована");
             }
 
-            ControlsCallbacks[code]?.Invoke();
+            ControlsCallbacks[code]?.Invoke(code);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="control"></param>
+        public static void ShowThisPage(this Control control) {
+            control.Dock = DockStyle.Fill;
+            MainForm.Controls.Add(control);
+            control.BringToFront();
         }
 
         /// <summary>
@@ -120,6 +159,16 @@ namespace CartridgesManager {
             if (!control.IsDisposed) {
                 control.Dispose();
             }
+        }
+
+        /// <summary>
+        /// Отображает сообщение в строке состояния формы
+        /// </summary>
+        /// <param name="message">Выводимое сообщение</param>
+        /// <param name="isError">Тип сообщения - ошибка или простое</param>
+        public static void CreateMessage(string message, bool isError) {
+            MainForm.CurrentOperationStripLabel.ForeColor = (isError) ? Color.Red : Color.Green;
+            MainForm.CurrentOperationStripLabel.Text = message;
         }
 
         /// <summary>

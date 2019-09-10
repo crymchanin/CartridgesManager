@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 
@@ -8,13 +10,19 @@ namespace CartridgesManager.Controls {
         public MainControl() {
             InitializeComponent();
 
-            NewSessionButton.Barcode = ((long)ActionsHelper.MainActions.NewSession).ToString();
-            NewSessionButton.ButtonClick += delegate (object s, EventArgs e) {
-                UserSelect ctrl = new UserSelect();
-                ctrl.Dock = DockStyle.Fill;
-                Parent.Controls.Add(ctrl);
-                ctrl.BringToFront();
-            };
+            // Открытие смены
+            NewSessionButton.Barcode = NewSessionButton.RegisterControl(((long)ActionsHelper.MainActions.NewSession),
+                delegate (string code) {
+                    if (SessionManager.IsSessionCreated) {
+                        GuiController.CreateMessage("Смена уже открыта под пользователем " + SessionManager.WorkerName, true);
+                        return;
+                    }
+                    else {
+                        UserSelect userSelect = new UserSelect();
+                        userSelect.ShowThisPage();
+                    }
+                });
+
             ServiceButton.Barcode = ((long)ActionsHelper.MainActions.ServiceCartridge).ToString();
             ServiceButton.ButtonClick += delegate (object s, EventArgs e) {
                 // Обслуживание картриджа здесь
@@ -31,18 +39,27 @@ namespace CartridgesManager.Controls {
             ViewCartridgesButton.ButtonClick += delegate (object s, EventArgs e) {
                 // Просмотр картриджей отделения здесь
             };
-            CloseSessionButton.Barcode = ((long)ActionsHelper.MainActions.CloseSession).ToString();
-            CloseSessionButton.ButtonClick += delegate (object s, EventArgs e) {
-                // Закрытие смены здесь
-            };
-            FullScreenButton.Barcode = ((long)ActionsHelper.MainActions.FullScreen).ToString();
-            FullScreenButton.ButtonClick += delegate (object s, EventArgs e) {
-                ((MainForm)Parent).SwitchFullScreenMode();
-            };
-            ExitButton.Barcode = ((long)ActionsHelper.MainActions.ExitApplication).ToString();
-            ExitButton.ButtonClick += delegate (object s, EventArgs e) {
-                GuiController.ExitApplication();
-            };
+
+            // Закрытие смены
+            CloseSessionButton.Barcode = CloseSessionButton.RegisterControl(((long)ActionsHelper.MainActions.CloseSession),
+                delegate(string code) {
+                    if (SessionManager.IsSessionCreated) {
+                        SessionManager.CloseSession();
+                        GuiController.CreateMessage("Закрытие смены выполнено", false);
+                    }
+                    else {
+                        GuiController.CreateMessage("Смена еще не открыта", true);
+                    }
+                });
+
+            // Переключение полноэкранного режима
+            FullScreenButton.Barcode = FullScreenButton.RegisterControl(((long)ActionsHelper.MainActions.FullScreen),
+                (c) => GuiController.MainForm.SwitchFullScreenMode());
+
+            // Выход из программы
+            ExitButton.Barcode = ExitButton.RegisterControl(((long)ActionsHelper.MainActions.ExitApplication),
+                (c) => GuiController.ExitApplication());
+
 
             MainBarcodeBox.BarcodeEndRead += BarcodeBox1_BarcodeEndRead;
         }

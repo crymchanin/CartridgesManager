@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -23,13 +17,16 @@ namespace CartridgesManager.Controls {
 
                 GuiController.IsMainActionsAllowed = false;
 
-                GuiController.ControlCallback callback = delegate () {
-                    CloseTabButton.UnregisterControl();
+                CloseTabButton.Barcode = CloseTabButton.RegisterControl((c) => this.NavigateToMainPage());
+                GuiController.ControlCallback SessionCallback = delegate (string code) {
+                    string workerName = GuiController.GetAssociatedControl(code).ButtonText;
+                    if (SessionManager.CreateNewSession(workerName)) {
+                        GuiController.CreateMessage("Смена открыта под пользователем " + workerName, false);
+                    }
+                    else {
+                        GuiController.CreateMessage("Не удалось открыть смену. Проверьте конфигурационный файл", true);
+                    }
                     this.NavigateToMainPage();
-                };
-                CloseTabButton.Barcode = CloseTabButton.RegisterControl(callback);
-                CloseTabButton.ButtonClick += delegate (object s, EventArgs e) {
-                    callback.Invoke();
                 };
 
                 List<ButtonWithBarcode> buttons = new List<ButtonWithBarcode>();
@@ -38,10 +35,7 @@ namespace CartridgesManager.Controls {
                     ButtonWithBarcode button = new ButtonWithBarcode();
                     button.ButtonText = user;
                     button.ButtonImage = Properties.Resources.sad_64;
-                    button.Barcode = button.RegisterControl(callback);
-                    button.ButtonClick += delegate (object s, EventArgs e) {
-                        callback.Invoke();
-                    };
+                    button.Barcode = button.RegisterControl(SessionCallback);
                     button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                     button.Height = ContentHeight;
                     button.Width = ContentWidth;

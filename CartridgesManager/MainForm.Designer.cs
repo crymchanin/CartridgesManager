@@ -55,7 +55,7 @@
             // WhitespaceLabel
             // 
             this.WhitespaceLabel.Name = "WhitespaceLabel";
-            this.WhitespaceLabel.Size = new System.Drawing.Size(907, 24);
+            this.WhitespaceLabel.Size = new System.Drawing.Size(876, 24);
             this.WhitespaceLabel.Spring = true;
             // 
             // CurrentOperationStripLabel
@@ -86,7 +86,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Картриджи";
-            this.BarcodeReaded += new CartridgesManager.BarcodeForm.BarcodeReadedEventHandler(this.MainForm_BarcodeReaded);
             this.MainStrip.ResumeLayout(false);
             this.MainStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -100,7 +99,7 @@
         private System.Windows.Forms.StatusStrip MainStrip;
         private System.Windows.Forms.ToolStripStatusLabel TimeStripLabel;
         private System.Windows.Forms.ToolStripStatusLabel WhitespaceLabel;
-        private System.Windows.Forms.ToolStripStatusLabel CurrentOperationStripLabel;
+        public System.Windows.Forms.ToolStripStatusLabel CurrentOperationStripLabel;
     }
 }
 

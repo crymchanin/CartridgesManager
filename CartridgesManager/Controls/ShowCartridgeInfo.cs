@@ -31,14 +31,7 @@ namespace CartridgesManager.Controls {
                 }
                 OpertionsBox.Items.AddRange(items.ToArray());
 
-                GuiController.ControlCallback callback = delegate () {
-                    CloseTabButton.UnregisterControl();
-                    this.NavigateToMainPage();
-                };
-                CloseTabButton.Barcode = CloseTabButton.RegisterControl(callback);
-                CloseTabButton.ButtonClick += delegate (object s, EventArgs e) {
-                    callback.Invoke();
-                };
+                CloseTabButton.Barcode = CloseTabButton.RegisterControl((c) => this.NavigateToMainPage());
             }
             catch (Exception ex) {
                 GuiController.IsMainActionsAllowed = true;

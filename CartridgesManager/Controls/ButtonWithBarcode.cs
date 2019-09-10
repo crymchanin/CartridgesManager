@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 
@@ -24,10 +25,16 @@ namespace CartridgesManager.Controls {
 
         public ButtonWithBarcode() {
             InitializeComponent();
+
+            Disposed += ButtonWithBarcode_Disposed;
+        }
+
+        private void ButtonWithBarcode_Disposed(object sender, EventArgs e) {
+            this.UnregisterControl();
         }
 
         private void FlatButton_Click(object sender, EventArgs e) {
-            ButtonClick?.Invoke(sender, e);
+            ButtonClick?.Invoke(this, e);
         }
 
         /// <summary>
