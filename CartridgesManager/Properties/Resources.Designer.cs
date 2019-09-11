@@ -123,6 +123,16 @@ namespace CartridgesManager.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap save_64 {
+            get {
+                object obj = ResourceManager.GetObject("save_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_64 {
             get {
                 object obj = ResourceManager.GetObject("search_64", resourceCulture);

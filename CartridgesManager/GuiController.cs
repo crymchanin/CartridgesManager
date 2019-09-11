@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -67,8 +69,13 @@ namespace CartridgesManager {
         /// <returns></returns>
         public static string RegisterControl(this ButtonWithBarcode control, ControlCallback callback) {
             string strCode = GenerateCode().ToString();
+            long counter = 0;
             while (ControlsDictionary.ContainsKey(strCode)) {
+                if (counter >= END_RANGE) {
+                    break;
+                }
                 strCode = GenerateCode().ToString();
+                counter++;
             }
             ControlsDictionary.Add(strCode, control);
             ControlsCallbacks.Add(strCode, callback);
@@ -147,6 +154,7 @@ namespace CartridgesManager {
             control.Dock = DockStyle.Fill;
             MainForm.Controls.Add(control);
             control.BringToFront();
+            control.Focus();
         }
 
         /// <summary>
@@ -191,6 +199,35 @@ namespace CartridgesManager {
         /// </summary>
         public static void ExitApplication() {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Изменяет размер изображения на указанные высоту и ширину
+        /// </summary>
+        /// <param name="image">Изменяемое изображение</param>
+        /// <param name="width">Новая ширина</param>
+        /// <param name="height">Новая высота</param>
+        /// <returns>Измененное изображение</returns>
+        public static Bitmap ResizeImage(Image image, int width, int height) {
+            Rectangle destRect = new Rectangle(0, 0, width, height);
+            Bitmap destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (Graphics graphics = Graphics.FromImage(destImage)) {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (ImageAttributes wrapMode = new ImageAttributes()) {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
         }
     }
 }

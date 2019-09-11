@@ -40,8 +40,7 @@
             // 
             // FlatButton
             // 
-            this.FlatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.FlatButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FlatButton.BackColor = System.Drawing.Color.DimGray;
             this.FlatButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;

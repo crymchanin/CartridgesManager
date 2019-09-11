@@ -117,41 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="search_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\search_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="SaveButton.ButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADoAAAA6AAZX3zGAAAAHBSURBVFhHxddNK8RRFMfxUSYPkReADWVJ9rKTN4Gd9+Bh
+        JZYe3oDkRSB5WmAvFqLIkhdAicLvS3e63XtmXDN3/k59ypx7zrm3/+j2n5KiVdbkQj4De0IMy7OE67VQ
+        PyK/xqpYA9DoAehrkXGpGq9iDUCOAxD7svzzZxxWs5PrAAdCbv77UxBho29XiFH5EKumGurpI3bE5edI
+        +OE3hQ6F6JNTuZHrBNRRTx/BHH/ugFTCXwg9yZAQ/DO1S1sC6qgn6GeOP/dKKofwFyznMiY90iXdCaij
+        nj76rbmX0ivmYuhNHuRO7hNQRz191jyHr8lcKJKZLJKZLJKZLJKZLJKZxJlsZsQ8ax8zyRXcKTmDecwN
+        94oSiO7rTMHccK8ogQUhuE6nZVu26kAf/e5aZm64V5TAohAdcitWTSr6mUMwN1yPEnAH4OSTwsvEUh3o
+        o989gT8fIHc0dIBBmZKZBNRRH0bdB+AR+m81Kah3j95FQ09gVo7kRI5rYJ066sNIPsC/3wMr0oxgbrhX
+        lABvNBPCS2V/BsxhHnPDvaKE8y6PGTHP2sdMFqnmT7NmY+/Supco2oaUysIhrJ/nzfIi2rxU/gJJ4shK
+        0L6y0AAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="close_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\close_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shutdown_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\shutdown_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sad_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\sad_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="service_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\service_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fullscreen_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\fullscreen_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="send_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\send_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="worker_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\worker_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cartridge_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\cartridge_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="remove_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\remove_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clock_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\clock_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\save_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloseTabButton.ButtonImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACw8AAAsPAZL5A6UAAAQxSURBVFhHtVc5bNRAFN3QQUMBDRIdEorIsbbH6wAFSQFU
+        RAqiQCJ0HB1I1JAKIRRAIhegBYSoKTgECgoBcSRZ72Y5ciACQiRskgoBoSBJEcLw33jG9hp7vcvxpK9d
+        23/e+/P95884UQGqbiSTWr+uH7mvaTdzDQ2TOdNczFkWF790jft4Dj/4O8P+EofXrVv12DAO2ZaVyZvm
+        0putW/nrLVv484YGLsSl4Rr38Rx+8H9qGAePrV+/UlJVjn7T3J61rNz45s0clg+IRhn84D9GlkulsuCR
+        lOVjgLETw4wtjdGshkNEyjGME+OJ5xljxyV1LKps0+wapeiDaf5TAw/4wAt+RyYCQ4ydQer8s84aBlJZ
+        RBpnWdPkWV13r0U2nCDapdTv6NO0A6/IKS8Hwexkkue3bRNBgFTdL2VCnPzzTU1ivLoPXvCnGVstJT30
+        1tRsoIL79MKX9kxdHX/V3My/T0zwmYsXeaa2Nj4Iem6T32w6zeffveMjLS3cJh5apuI5+AdSqTNS1sEd
+        Xa+norsmqlYSYQZje/fyhclJrjDd1VUyCNzHcwSrsFAo8PF9+3iWMdePluniXU1LSnlR8Zdp9t+DqZ88
+        dUrSeIgKQolPX7ggPT18OHmy6FW8pV4xYJpXhHh3dfWajGV9RpX6CVF0KKLpnh5J42G6u7soiFLihc5O
+        bmtaEfdL0qKMfElv3Lg20W8Yu5D6lyFLDsR4nzMhxG4m6FUJ8ZBAC9IHdeHnVf3hoa43J+5p2vkJSklk
+        s5GziwyipkZkJIgocWV4Db263pF4wlh+JJj+gKkUz1y6JOk9zA0Oyn8e4sRhWI5PSTthW9Zc5Ox9JoKg
+        5RQWhB+qPkqJw6A5bJpfEcBymEOYiSAo5YWODv5zeVlKOsD1x3PneGbTJuEXNj5o0K48ABL41wGU/QrQ
+        0fxNJgzBJRpl7itAIZRThFHi34aG5D8PcR0T5hZh3DIsJa6EwpahehZVjNAUy1A1Iv8mpAziIAkVV6ku
+        0YgQBBpZMBOYrNuIIlsxGcjDll1wdirQqLadDbZimqzbigFsDLZlzQc3o6n2dknjIarJlApi6vTpov0A
+        XXDQNK8KcQBbI924HtyOx1tb+SJtpwrYWMLE3TEqCF9NLM7O8vH9+wWf8sN2fMs5unvoNYziAwn9ovhG
+        du8WBwvMDE0orsO5dUOvbuH9ez66Z48TtHwO/sFU6qyULUYfYwewJP0rQhzJGhu5jfNdjLgyBIGt/Hkl
+        RzKFDEWHV+EPQqSvwkMpgg07lIJfSkWiKsNYz386lneD35GJwYBhtOET6198mICHDqJtkrp8PDKMne6n
+        GYjKzIj4NCN/pBzjHzK2Q1JWDnycPjGMw7QqbJrJjzI/Tn9QDdgYh/GS6q+x4nZ9vd6vaUcf6PqtHGNT
+        1M3E57n4pWvcx3P4wd8ZVgqJxC/H4xIfkIh6vQAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

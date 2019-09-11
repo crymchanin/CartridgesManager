@@ -57,5 +57,47 @@ namespace CartridgesManager {
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает типы картриджей
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> GetCartridgeTypes() {
+            return new string[] { "б/у", "склад" };
+        }
+
+        /// <summary>
+        /// Возвращает модели картриджей
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> GetCartridgeModels() {
+            return new string[] { "Картридж  CANON 737", "Картридж HP LJ 728 /canon728", "Картридж 285А", "Картридж LJ CE278A/726/728", "Картридж MLT-D111S", "Картридж MLT-D115L" };
+        }
+
+        /// <summary>
+        /// Возвращает список мест установки
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> GetCartridgeLocations() {
+            string connectionString = string.Format(@"Provider={0}; Data Source={1}; User ID={2}; Password={3}",
+                AppHelper.Configuration.Sql.Provider, AppHelper.Configuration.Sql.DataSource, AppHelper.Configuration.Sql.UserID, AppHelper.Configuration.Sql.Password);
+
+            using (OleDbConnection connection = new OleDbConnection(connectionString)) {
+                connection.Open();
+
+                string queryString = @"SELECT `Код`, `Место установки`
+                                   FROM `Место установки`
+                                   ORDER BY `Место установки` ASC";
+
+                using (OleDbCommand command = new OleDbCommand(queryString, connection)) {
+                    OleDbDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read()) {
+                        yield return reader[1].ToString();
+                    }
+                    reader.Close();
+                }
+            }
+        }
     }
 }

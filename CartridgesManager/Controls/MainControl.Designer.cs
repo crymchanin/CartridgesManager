@@ -41,6 +41,7 @@
             this.ViewInfoButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.ViewInfoButton.ButtonImage = global::CartridgesManager.Properties.Resources.cartridge_64;
             this.ViewInfoButton.ButtonText = "Просмотр информации о картридже";
+            this.ViewInfoButton.CompactMode = false;
             this.ViewInfoButton.Location = new System.Drawing.Point(730, 25);
             this.ViewInfoButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.ViewInfoButton.Name = "ViewInfoButton";
@@ -54,6 +55,7 @@
             this.AddNewCartridgeButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.AddNewCartridgeButton.ButtonImage = global::CartridgesManager.Properties.Resources.send_64;
             this.AddNewCartridgeButton.ButtonText = "Добавить новый картридж";
+            this.AddNewCartridgeButton.CompactMode = false;
             this.AddNewCartridgeButton.Location = new System.Drawing.Point(493, 25);
             this.AddNewCartridgeButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.AddNewCartridgeButton.Name = "AddNewCartridgeButton";
@@ -67,6 +69,7 @@
             this.ServiceButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.ServiceButton.ButtonImage = global::CartridgesManager.Properties.Resources.service_64;
             this.ServiceButton.ButtonText = "Обслуживание картриджа";
+            this.ServiceButton.CompactMode = false;
             this.ServiceButton.Location = new System.Drawing.Point(262, 25);
             this.ServiceButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.ServiceButton.Name = "ServiceButton";
@@ -80,6 +83,7 @@
             this.NewSessionButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.NewSessionButton.ButtonImage = global::CartridgesManager.Properties.Resources.worker_64;
             this.NewSessionButton.ButtonText = "Открыть смену";
+            this.NewSessionButton.CompactMode = false;
             this.NewSessionButton.Location = new System.Drawing.Point(25, 25);
             this.NewSessionButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.NewSessionButton.Name = "NewSessionButton";
@@ -102,6 +106,7 @@
             this.ViewCartridgesButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.ViewCartridgesButton.ButtonImage = global::CartridgesManager.Properties.Resources.search_64;
             this.ViewCartridgesButton.ButtonText = "Просмотр картриджей на отделении";
+            this.ViewCartridgesButton.CompactMode = false;
             this.ViewCartridgesButton.Location = new System.Drawing.Point(25, 291);
             this.ViewCartridgesButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.ViewCartridgesButton.Name = "ViewCartridgesButton";
@@ -115,6 +120,7 @@
             this.CloseSessionButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.CloseSessionButton.ButtonImage = global::CartridgesManager.Properties.Resources.close_64;
             this.CloseSessionButton.ButtonText = "Закрытие смены";
+            this.CloseSessionButton.CompactMode = false;
             this.CloseSessionButton.Location = new System.Drawing.Point(262, 291);
             this.CloseSessionButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.CloseSessionButton.Name = "CloseSessionButton";
@@ -128,6 +134,7 @@
             this.FullScreenButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.FullScreenButton.ButtonImage = global::CartridgesManager.Properties.Resources.fullscreen_64;
             this.FullScreenButton.ButtonText = "Полноэкранный режим (вкл/выкл)";
+            this.FullScreenButton.CompactMode = false;
             this.FullScreenButton.Location = new System.Drawing.Point(493, 291);
             this.FullScreenButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.FullScreenButton.Name = "FullScreenButton";
@@ -141,6 +148,7 @@
             this.ExitButton.ButtonBackColor = System.Drawing.Color.DimGray;
             this.ExitButton.ButtonImage = global::CartridgesManager.Properties.Resources.shutdown_64;
             this.ExitButton.ButtonText = "Выйти из программы";
+            this.ExitButton.CompactMode = false;
             this.ExitButton.Location = new System.Drawing.Point(730, 291);
             this.ExitButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.ExitButton.Name = "ExitButton";

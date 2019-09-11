@@ -19,7 +19,7 @@ namespace CartridgesManager.Controls {
 
                 CloseTabButton.Barcode = CloseTabButton.RegisterControl((c) => this.NavigateToMainPage());
                 GuiController.ControlCallback SessionCallback = delegate (string code) {
-                    string workerName = GuiController.GetAssociatedControl(code).ButtonText;
+                    string workerName = GuiController.GetAssociatedControl(code).GetCustomData<string>();
                     if (SessionManager.CreateNewSession(workerName)) {
                         GuiController.CreateMessage("Смена открыта под пользователем " + workerName, false);
                     }
@@ -41,6 +41,7 @@ namespace CartridgesManager.Controls {
                     button.Width = ContentWidth;
                     button.TabIndex = index;
                     button.Margin = new Padding(ContentMargins, ContentMargins, 0, 0);
+                    button.SetCustomData(user);
 
                     buttons.Add(button);
                     index++;

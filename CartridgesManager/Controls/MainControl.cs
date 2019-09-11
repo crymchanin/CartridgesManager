@@ -27,14 +27,23 @@ namespace CartridgesManager.Controls {
             ServiceButton.ButtonClick += delegate (object s, EventArgs e) {
                 // Обслуживание картриджа здесь
             };
-            AddNewCartridgeButton.Barcode = ((long)ActionsHelper.MainActions.AddNewCartridge).ToString();
-            AddNewCartridgeButton.ButtonClick += delegate (object s, EventArgs e) {
-                // Добавление нового картриджа здесь
-            };
+
+            AddNewCartridgeButton.Barcode = AddNewCartridgeButton.RegisterControl(((long)ActionsHelper.MainActions.AddNewCartridge),
+                delegate (string code) {
+                    if (SessionManager.IsSessionCreated) {
+                        AddNewCartridge addNewCartridge = new AddNewCartridge();
+                        addNewCartridge.ShowThisPage();
+                    }
+                    else {
+                        GuiController.CreateMessage("Смена не открыта", true);
+                    }
+                });
+
             ViewInfoButton.Barcode = ((long)ActionsHelper.MainActions.CartridgeInfo).ToString();
             ViewInfoButton.ButtonClick += delegate (object s, EventArgs e) {
-                ShowBarcodeBox(true);
+                //ShowBarcodeBox(true);
             };
+
             ViewCartridgesButton.Barcode = ((long)ActionsHelper.MainActions.PostOfficeInfo).ToString();
             ViewCartridgesButton.ButtonClick += delegate (object s, EventArgs e) {
                 // Просмотр картриджей отделения здесь
@@ -48,7 +57,7 @@ namespace CartridgesManager.Controls {
                         GuiController.CreateMessage("Закрытие смены выполнено", false);
                     }
                     else {
-                        GuiController.CreateMessage("Смена еще не открыта", true);
+                        GuiController.CreateMessage("Смена не открыта", true);
                     }
                 });
 
@@ -77,6 +86,10 @@ namespace CartridgesManager.Controls {
 
         private void BarcodeBox1_BarcodeEndRead(long barcode) {
             CartridgeInfo cartridgeInfo = DatabaseHelper.GetCartridgeInfo(barcode);
+            if (cartridgeInfo == null) {
+                GuiController.CreateMessage("Почини меня", true);
+                return;
+            }
             ShowCartridgeInfo ctrl = new ShowCartridgeInfo(barcode, cartridgeInfo);
             ctrl.Dock = DockStyle.Fill;
             Parent.Controls.Add(ctrl);

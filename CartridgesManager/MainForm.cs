@@ -63,7 +63,8 @@ namespace CartridgesManager {
 
                 long lCode = long.Parse(code);
                 if (ActionsHelper.IsServiceCode(lCode) && GuiController.IsMainActionsAllowed) {
-                    switch (lCode) {
+                    GuiController.InvokeAssociatedCallback(code);
+                    /*switch (lCode) {
                         case (long)ActionsHelper.MainActions.NewSession:
                             GuiController.InvokeAssociatedCallback(code);
                             break;
@@ -71,13 +72,16 @@ namespace CartridgesManager {
                             GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.CartridgeInfo:
-                            mainControl1.ShowBarcodeBox(true); // !!!!!
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.AddNewCartridge:
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.ServiceCartridge:
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.PostOfficeInfo:
+                            GuiController.InvokeAssociatedCallback(code);
                             break;
                         case (long)ActionsHelper.MainActions.FullScreen:
                             GuiController.InvokeAssociatedCallback(code);
@@ -87,7 +91,7 @@ namespace CartridgesManager {
                             break;
                         default:
                             break;
-                    }
+                    }*/
                 }
                 else {
                     if (lCode >= GuiController.START_RANGE && lCode <= GuiController.END_RANGE) {

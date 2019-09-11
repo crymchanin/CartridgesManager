@@ -1,0 +1,91 @@
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+
+namespace CartridgesManager.Controls {
+    public partial class AddNewCartridge : UserControl {
+
+        private const int ContentMargins = 15;
+        private const int ContentWidth = 207;
+
+
+        public AddNewCartridge() {
+            GuiController.IsMainActionsAllowed = false;
+
+            InitializeComponent();
+
+            CloseTabButton.Barcode = CloseTabButton.RegisterControl((c) => this.NavigateToMainPage());
+
+            SaveButton.Barcode = SaveButton.RegisterControl((c) => this.NavigateToMainPage());
+
+            GuiController.ControlCallback SessionCallback = delegate (string code) {
+                ButtonWithBarcode sender = GuiController.GetAssociatedControl(code);
+                sender.ButtonBackColor = Color.Green;
+                foreach (Control ctrl in sender.Parent.Controls) {
+                    if (ctrl is ButtonWithBarcode) {
+                        ButtonWithBarcode child = ctrl as ButtonWithBarcode;
+                        if (child.Barcode != code) {
+                            child.ButtonBackColor = Color.DimGray;
+                        }
+                    }
+                }
+            };
+
+            string[] types = DatabaseHelper.GetCartridgeTypes().ToArray();
+            List<ButtonWithBarcode> buttons = new List<ButtonWithBarcode>();
+            int index = 0;
+            foreach (string type in types) {
+                ButtonWithBarcode button = new ButtonWithBarcode();
+                button.ButtonText = type;
+                button.Barcode = button.RegisterControl(SessionCallback);
+                button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+                button.CompactMode = true;
+                button.TabIndex = index;
+                button.Margin = new Padding(0, 0, 0, ContentMargins);
+                button.SetCustomData(type);
+
+                buttons.Add(button);
+                index++;
+            }
+            TypeLayoutPanel.Controls.AddRange(buttons.ToArray());
+
+            string[] models = DatabaseHelper.GetCartridgeModels().ToArray();
+            buttons = new List<ButtonWithBarcode>();
+            index = 0;
+            foreach (string model in models) {
+                ButtonWithBarcode button = new ButtonWithBarcode();
+                button.ButtonText = model;
+                button.Barcode = button.RegisterControl(SessionCallback);
+                button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+                button.CompactMode = true;
+                button.TabIndex = index;
+                button.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
+                button.SetCustomData(model);
+
+                buttons.Add(button);
+                index++;
+            }
+            ModelsLayoutPanel.Controls.AddRange(buttons.ToArray());
+
+            string[] locations = DatabaseHelper.GetCartridgeLocations().ToArray();
+            buttons = new List<ButtonWithBarcode>();
+            index = 0;
+            foreach (string location in locations) {
+                ButtonWithBarcode button = new ButtonWithBarcode();
+                button.ButtonText = location;
+                button.Barcode = button.RegisterControl(SessionCallback);
+                button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+                button.CompactMode = true;
+                button.TabIndex = index;
+                button.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
+                button.SetCustomData(location);
+
+                buttons.Add(button);
+                index++;
+            }
+            LocationsLayoutPanel.Controls.AddRange(buttons.ToArray());
+        }
+    }
+}
