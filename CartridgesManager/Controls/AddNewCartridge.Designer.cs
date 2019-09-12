@@ -28,15 +28,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DateBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.WorkerBox = new System.Windows.Forms.TextBox();
             this.TypeLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.ModelsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
-            this.LocationsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
+            this.LocationsBox = new CartridgesManager.Controls.AlphabetBox();
             this.SaveButton = new CartridgesManager.Controls.ButtonWithBarcode();
             this.CloseTabButton = new CartridgesManager.Controls.ButtonWithBarcode();
             this.SuspendLayout();
@@ -84,16 +84,16 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Дата операции";
             // 
-            // textBox1
+            // DateBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(405, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(357, 26);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DateBox.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.DateBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DateBox.Location = new System.Drawing.Point(405, 100);
+            this.DateBox.Name = "DateBox";
+            this.DateBox.ReadOnly = true;
+            this.DateBox.Size = new System.Drawing.Size(357, 26);
+            this.DateBox.TabIndex = 1;
+            this.DateBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -105,16 +105,16 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Выполнил";
             // 
-            // textBox2
+            // WorkerBox
             // 
-            this.textBox2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(795, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(357, 26);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WorkerBox.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.WorkerBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkerBox.Location = new System.Drawing.Point(795, 100);
+            this.WorkerBox.Name = "WorkerBox";
+            this.WorkerBox.ReadOnly = true;
+            this.WorkerBox.Size = new System.Drawing.Size(357, 26);
+            this.WorkerBox.TabIndex = 2;
+            this.WorkerBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TypeLayoutPanel
             // 
@@ -155,17 +155,6 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Место установки картриджа";
             // 
-            // LocationsLayoutPanel
-            // 
-            this.LocationsLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LocationsLayoutPanel.AutoScroll = true;
-            this.LocationsLayoutPanel.Location = new System.Drawing.Point(17, 444);
-            this.LocationsLayoutPanel.Name = "LocationsLayoutPanel";
-            this.LocationsLayoutPanel.Size = new System.Drawing.Size(920, 330);
-            this.LocationsLayoutPanel.TabIndex = 11;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -175,6 +164,17 @@
             this.label7.Size = new System.Drawing.Size(159, 18);
             this.label7.TabIndex = 12;
             this.label7.Text = "Модель картриджа";
+            // 
+            // LocationsBox
+            // 
+            this.LocationsBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LocationsBox.BackColor = System.Drawing.Color.White;
+            this.LocationsBox.Location = new System.Drawing.Point(17, 444);
+            this.LocationsBox.Name = "LocationsBox";
+            this.LocationsBox.Size = new System.Drawing.Size(920, 330);
+            this.LocationsBox.TabIndex = 13;
             // 
             // SaveButton
             // 
@@ -213,17 +213,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.LocationsBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.LocationsLayoutPanel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ModelsLayoutPanel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TypeLayoutPanel);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.WorkerBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.DateBox);
             this.Controls.Add(this.CloseTabButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -244,15 +244,15 @@
         private System.Windows.Forms.Label label2;
         private ButtonWithBarcode CloseTabButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DateBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox WorkerBox;
         private System.Windows.Forms.FlowLayoutPanel TypeLayoutPanel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel ModelsLayoutPanel;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.FlowLayoutPanel LocationsLayoutPanel;
         private System.Windows.Forms.Label label7;
         private ButtonWithBarcode SaveButton;
+        private AlphabetBox LocationsBox;
     }
 }

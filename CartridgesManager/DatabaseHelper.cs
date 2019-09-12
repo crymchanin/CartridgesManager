@@ -11,7 +11,7 @@ namespace CartridgesManager {
         /// Возвращает информацию о картридже
         /// </summary>
         /// <param name="code">Код картриджа</param>
-        public static CartridgeInfo GetCartridgeInfo(long code) {
+        public static CartridgeInfo GetCartridgeInfo(string code) {
             string connectionString = string.Format(@"Provider={0}; Data Source={1}; User ID={2}; Password={3}",
                 AppHelper.Configuration.Sql.Provider, AppHelper.Configuration.Sql.DataSource, AppHelper.Configuration.Sql.UserID, AppHelper.Configuration.Sql.Password);
 
@@ -19,7 +19,7 @@ namespace CartridgesManager {
                 connection.Open();
 
                 string queryString = @"SELECT Format([Дата действия], ""dd.mm.yyyy"") AS [Дата], t.[Действие] AS [Действие], a.[Название] AS [Название], [Шт], [Фамилия], [Комментарий]
-                                       FROM(((SELECT o.* FROM[Действия с картриджами] AS o WHERE o.[Штрих код] IN(SELECT[Код] FROM[Картридж] WHERE[Штрих код] = '" + code.ToString() + @"')) AS r
+                                       FROM(((SELECT o.* FROM[Действия с картриджами] AS o WHERE o.[Штрих код] IN(SELECT[Код] FROM[Картридж] WHERE[Штрих код] = '" + code + @"')) AS r
                                        LEFT JOIN[Виды действий] AS t ON r.[Действие] = t.[Код])
                                        LEFT JOIN[Комплектующие] AS a ON r.[Название] = a.[Код])
                                        ORDER BY[Дата действия] ASC;";
@@ -40,7 +40,7 @@ namespace CartridgesManager {
 
                 queryString = @"SELECT Format(C.`Дата выдачи`, ""dd.mm.yyyy""), L.`Место установки`, C.`Модель картриджа`, C.`Тип картриджа`, C.`Фамилия`
                                    FROM `Картридж` AS C, `Место установки` AS L
-                                   WHERE C.`Штрих код` = '" + code.ToString() + "' AND C.`Место установки` = L.`Код`";
+                                   WHERE C.`Штрих код` = '" + code + "' AND C.`Место установки` = L.`Код`";
 
                 using (OleDbCommand command = new OleDbCommand(queryString, connection)) {
                     OleDbDataReader reader = command.ExecuteReader();

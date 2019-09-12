@@ -76,6 +76,12 @@
     <Compile Include="Controls\AddNewCartridge.Designer.cs">
       <DependentUpon>AddNewCartridge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AlphabetBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AlphabetBox.Designer.cs">
+      <DependentUpon>AlphabetBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BarcodeBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     <Compile Include="SessionManager.cs" />
     <EmbeddedResource Include="Controls\AddNewCartridge.resx">
       <DependentUpon>AddNewCartridge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AlphabetBox.resx">
+      <DependentUpon>AlphabetBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BarcodeBox.resx">
       <DependentUpon>BarcodeBox.cs</DependentUpon>
@@ -189,6 +198,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Images\back_64.png" />
+    <None Include="Images\back.png" />
     <None Include="Images\save_64.png" />
     <None Include="Images\sad_64.png" />
     <None Include="Images\remove_64.png" />

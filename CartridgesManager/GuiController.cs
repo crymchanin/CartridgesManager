@@ -190,8 +190,12 @@ namespace CartridgesManager {
             }
             IsFullScreen = !IsFullScreen;
 
-            form.FormBorderStyle = (IsFullScreen) ? FormBorderStyle.None : FormBorderStyle.FixedSingle;
+            form.FormBorderStyle = (IsFullScreen) ? FormBorderStyle.None : FormBorderStyle.Sizable;
             form.WindowState = (IsFullScreen) ? FormWindowState.Maximized : OldState;
+            if (!IsFullScreen) {
+                form.SetDesktopLocation(Screen.PrimaryScreen.Bounds.Location.X + (Screen.PrimaryScreen.WorkingArea.Width - form.Width) / 2,
+                    Screen.PrimaryScreen.Bounds.Location.Y + (Screen.PrimaryScreen.WorkingArea.Height - form.Height) / 2);
+            }
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,10 +12,23 @@ namespace CartridgesManager.Controls {
         private const int ContentWidth = 207;
 
 
+
+        private void CartridgeCodeReaded(string code) {
+            if (CodeBox.Focused) {
+                CodeBox.Text = code;
+                SaveButton.Focus();
+            }
+        }
+
         public AddNewCartridge() {
             GuiController.IsMainActionsAllowed = false;
 
             InitializeComponent();
+
+            Disposed += (s, e) => AppHelper.ComListener.BarcodeReaded -= CartridgeCodeReaded;
+            AppHelper.ComListener.BarcodeReaded += CartridgeCodeReaded;
+            DateBox.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            WorkerBox.Text = SessionManager.WorkerName;
 
             CloseTabButton.Barcode = CloseTabButton.RegisterControl((c) => this.NavigateToMainPage());
 
@@ -26,7 +40,7 @@ namespace CartridgesManager.Controls {
                 foreach (Control ctrl in sender.Parent.Controls) {
                     if (ctrl is ButtonWithBarcode) {
                         ButtonWithBarcode child = ctrl as ButtonWithBarcode;
-                        if (child.Barcode != code) {
+                        if (child.Barcode != code && child.ButtonBackColor == Color.Green) {
                             child.ButtonBackColor = Color.DimGray;
                         }
                     }
@@ -69,23 +83,38 @@ namespace CartridgesManager.Controls {
             }
             ModelsLayoutPanel.Controls.AddRange(buttons.ToArray());
 
-            string[] locations = DatabaseHelper.GetCartridgeLocations().ToArray();
-            buttons = new List<ButtonWithBarcode>();
-            index = 0;
-            foreach (string location in locations) {
-                ButtonWithBarcode button = new ButtonWithBarcode();
-                button.ButtonText = location;
-                button.Barcode = button.RegisterControl(SessionCallback);
-                button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-                button.CompactMode = true;
-                button.TabIndex = index;
-                button.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
-                button.SetCustomData(location);
+            LocationsBox.LoadContentPage += delegate (AlphabetBox sender, char[] words) {
+                string[] locations = DatabaseHelper.GetCartridgeLocations().ToArray();
+                locations = locations.Where(x => words.Contains(char.ToLowerInvariant(x.First()))).ToArray();
+                buttons = new List<ButtonWithBarcode>();
+                index = 0;
+                foreach (string location in locations) {
+                    ButtonWithBarcode button = new ButtonWithBarcode();
+                    button.ButtonText = location;
+                    button.Barcode = button.RegisterControl(SessionCallback);
+                    button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+                    button.CompactMode = true;
+                    button.TabIndex = index;
+                    button.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
+                    button.SetCustomData(location);
 
-                buttons.Add(button);
-                index++;
-            }
-            LocationsLayoutPanel.Controls.AddRange(buttons.ToArray());
+                    buttons.Add(button);
+                    index++;
+                }
+                ButtonWithBarcode backButton = new ButtonWithBarcode();
+                backButton.ButtonText = "Вернуться назад";
+                backButton.ButtonImage = Properties.Resources.back_64;
+                backButton.Barcode = backButton.RegisterControl((c) => sender.LoadMainPage());
+                backButton.ButtonBackColor = Color.LightSkyBlue;
+                backButton.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+                backButton.CompactMode = true;
+                backButton.ButtonFontSize = 9.25F;
+                backButton.TabIndex = index;
+                backButton.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
+                buttons.Add(backButton);
+
+                sender.ContentControls.AddRange(buttons.ToArray());
+            };
         }
     }
 }

@@ -39,10 +39,11 @@ namespace CartridgesManager.Controls {
                     }
                 });
 
-            ViewInfoButton.Barcode = ((long)ActionsHelper.MainActions.CartridgeInfo).ToString();
-            ViewInfoButton.ButtonClick += delegate (object s, EventArgs e) {
-                //ShowBarcodeBox(true);
-            };
+            ViewInfoButton.Barcode = AddNewCartridgeButton.RegisterControl(((long)ActionsHelper.MainActions.CartridgeInfo),
+                delegate (string code) {
+                    ShowCartridgeInfo showCartridgeInfo = new ShowCartridgeInfo();
+                    showCartridgeInfo.ShowThisPage();
+                });
 
             ViewCartridgesButton.Barcode = ((long)ActionsHelper.MainActions.PostOfficeInfo).ToString();
             ViewCartridgesButton.ButtonClick += delegate (object s, EventArgs e) {
@@ -73,28 +74,9 @@ namespace CartridgesManager.Controls {
             MainBarcodeBox.BarcodeEndRead += BarcodeBox1_BarcodeEndRead;
         }
 
-        /// <summary>
-        /// Отображает поле для считывания кода картриджа
-        /// </summary>
-        /// <param name="showBox">Если true будет поле отображено</param>
-        public void ShowBarcodeBox(bool showBox) {
-            MainBarcodeBox.Visible = showBox;
-            if (showBox) {
-                MainBarcodeBox.Focus();
-            }
-        }
-
+        // УДАЛИТЬ !!!!!
         private void BarcodeBox1_BarcodeEndRead(long barcode) {
-            CartridgeInfo cartridgeInfo = DatabaseHelper.GetCartridgeInfo(barcode);
-            if (cartridgeInfo == null) {
-                GuiController.CreateMessage("Почини меня", true);
-                return;
-            }
-            ShowCartridgeInfo ctrl = new ShowCartridgeInfo(barcode, cartridgeInfo);
-            ctrl.Dock = DockStyle.Fill;
-            Parent.Controls.Add(ctrl);
-            ctrl.BringToFront();
-            ShowBarcodeBox(false);
+
         }
     }
 }

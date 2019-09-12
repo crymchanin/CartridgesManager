@@ -55,7 +55,7 @@
             // WhitespaceLabel
             // 
             this.WhitespaceLabel.Name = "WhitespaceLabel";
-            this.WhitespaceLabel.Size = new System.Drawing.Size(876, 24);
+            this.WhitespaceLabel.Size = new System.Drawing.Size(907, 24);
             this.WhitespaceLabel.Spring = true;
             // 
             // CurrentOperationStripLabel
