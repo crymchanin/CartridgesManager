@@ -73,6 +73,16 @@ namespace CartridgesManager.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backward_64 {
+            get {
+                object obj = ResourceManager.GetObject("backward_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cartridge_64 {
             get {
                 object obj = ResourceManager.GetObject("cartridge_64", resourceCulture);
@@ -96,6 +106,16 @@ namespace CartridgesManager.Properties {
         internal static System.Drawing.Bitmap close_64 {
             get {
                 object obj = ResourceManager.GetObject("close_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap forward_64 {
+            get {
+                object obj = ResourceManager.GetObject("forward_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

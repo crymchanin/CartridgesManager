@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Text;
 using System.Windows.Forms;
 
 
@@ -9,6 +7,7 @@ namespace CartridgesManager.Controls {
 
         public MainControl() {
             InitializeComponent();
+
 
             // Открытие смены
             NewSessionButton.Barcode = NewSessionButton.RegisterControl(((long)ActionsHelper.MainActions.NewSession),
@@ -23,10 +22,16 @@ namespace CartridgesManager.Controls {
                     }
                 });
 
-            ServiceButton.Barcode = ((long)ActionsHelper.MainActions.ServiceCartridge).ToString();
-            ServiceButton.ButtonClick += delegate (object s, EventArgs e) {
-                // Обслуживание картриджа здесь
-            };
+            ServiceButton.Barcode = ServiceButton.RegisterControl(((long)ActionsHelper.MainActions.ServiceCartridge),
+                delegate (string code) {
+                    if (SessionManager.IsSessionCreated) {
+                        ServiceCartridge serviceCartridge = new ServiceCartridge();
+                        serviceCartridge.ShowThisPage();
+                    }
+                    else {
+                        GuiController.CreateMessage("Смена не открыта", true);
+                    }
+                });
 
             AddNewCartridgeButton.Barcode = AddNewCartridgeButton.RegisterControl(((long)ActionsHelper.MainActions.AddNewCartridge),
                 delegate (string code) {
@@ -39,7 +44,7 @@ namespace CartridgesManager.Controls {
                     }
                 });
 
-            ViewInfoButton.Barcode = AddNewCartridgeButton.RegisterControl(((long)ActionsHelper.MainActions.CartridgeInfo),
+            ViewInfoButton.Barcode = ViewInfoButton.RegisterControl(((long)ActionsHelper.MainActions.CartridgeInfo),
                 delegate (string code) {
                     ShowCartridgeInfo showCartridgeInfo = new ShowCartridgeInfo();
                     showCartridgeInfo.ShowThisPage();
@@ -69,14 +74,6 @@ namespace CartridgesManager.Controls {
             // Выход из программы
             ExitButton.Barcode = ExitButton.RegisterControl(((long)ActionsHelper.MainActions.ExitApplication),
                 (c) => GuiController.ExitApplication());
-
-
-            MainBarcodeBox.BarcodeEndRead += BarcodeBox1_BarcodeEndRead;
-        }
-
-        // УДАЛИТЬ !!!!!
-        private void BarcodeBox1_BarcodeEndRead(long barcode) {
-
         }
     }
 }

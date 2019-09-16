@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.ContentLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.CloseTabButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.CloseTabButton = new CartridgesManager.Controls.BarcodeButton();
             this.ContentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +81,7 @@
 
         #endregion
 
-        private ButtonWithBarcode CloseTabButton;
+        private BarcodeButton CloseTabButton;
         private System.Windows.Forms.Panel ContentPanel;
         private System.Windows.Forms.FlowLayoutPanel ContentLayoutPanel;
     }

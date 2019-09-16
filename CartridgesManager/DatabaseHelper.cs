@@ -99,5 +99,31 @@ namespace CartridgesManager {
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает список действий с картриджами
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<string> GetCartridgeActionTypes() {
+            string connectionString = string.Format(@"Provider={0}; Data Source={1}; User ID={2}; Password={3}",
+                AppHelper.Configuration.Sql.Provider, AppHelper.Configuration.Sql.DataSource, AppHelper.Configuration.Sql.UserID, AppHelper.Configuration.Sql.Password);
+
+            using (OleDbConnection connection = new OleDbConnection(connectionString)) {
+                connection.Open();
+
+                string queryString = @"SELECT `Код`, `Действие`
+                                   FROM `Виды действий`
+                                   ORDER BY `Действие` ASC";
+
+                using (OleDbCommand command = new OleDbCommand(queryString, connection)) {
+                    OleDbDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read()) {
+                        yield return reader[1].ToString();
+                    }
+                    reader.Close();
+                }
+            }
+        }
     }
 }

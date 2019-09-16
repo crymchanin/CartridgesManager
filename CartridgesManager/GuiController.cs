@@ -24,7 +24,7 @@ namespace CartridgesManager {
         /// </summary>
         private static FormWindowState OldState { get; set; } = FormWindowState.Normal;
 
-        private static Dictionary<string, ButtonWithBarcode> ControlsDictionary { get; set; } = new Dictionary<string, ButtonWithBarcode>();
+        private static Dictionary<string, BarcodeButton> ControlsDictionary { get; set; } = new Dictionary<string, BarcodeButton>();
         private static Dictionary<string, ControlCallback> ControlsCallbacks { get; set; } = new Dictionary<string, ControlCallback>();
 
         public delegate void ControlCallback(string code);
@@ -57,7 +57,7 @@ namespace CartridgesManager {
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        private static string GetCode(ButtonWithBarcode control) {
+        private static string GetCode(BarcodeButton control) {
             return ControlsDictionary.FirstOrDefault(x => x.Value.GetHashCode() == control.GetHashCode()).Key;
         }
 
@@ -67,7 +67,7 @@ namespace CartridgesManager {
         /// <param name="control"></param>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public static string RegisterControl(this ButtonWithBarcode control, ControlCallback callback) {
+        public static string RegisterControl(this BarcodeButton control, ControlCallback callback) {
             string strCode = GenerateCode().ToString();
             long counter = 0;
             while (ControlsDictionary.ContainsKey(strCode)) {
@@ -79,7 +79,7 @@ namespace CartridgesManager {
             }
             ControlsDictionary.Add(strCode, control);
             ControlsCallbacks.Add(strCode, callback);
-            (control as ButtonWithBarcode).ButtonClick += (s, e) =>
+            (control as BarcodeButton).ButtonClick += (s, e) =>
                 callback.Invoke(strCode);
             ;
 
@@ -93,7 +93,7 @@ namespace CartridgesManager {
         /// <param name="code"></param>
         /// <param name="callback"></param>
         /// <returns></returns>
-        public static string RegisterControl(this ButtonWithBarcode control, long code, ControlCallback callback) {
+        public static string RegisterControl(this BarcodeButton control, long code, ControlCallback callback) {
             string strCode = code.ToString();
             if (ControlsDictionary.ContainsKey(strCode)) {
                 throw new ArgumentException("Элемент с кодом '" + strCode + "' уже зарегистрирован");
@@ -101,7 +101,7 @@ namespace CartridgesManager {
 
             ControlsDictionary.Add(strCode, control);
             ControlsCallbacks.Add(strCode, callback);
-            (control as ButtonWithBarcode).ButtonClick += (s, e) =>
+            (control as BarcodeButton).ButtonClick += (s, e) =>
                 callback.Invoke(strCode);
             ;
 
@@ -112,7 +112,7 @@ namespace CartridgesManager {
         /// 
         /// </summary>
         /// <param name="control"></param>
-        public static void UnregisterControl(this ButtonWithBarcode control) {
+        public static void UnregisterControl(this BarcodeButton control) {
             string code = GetCode(control);
             if (!string.IsNullOrEmpty(code)) {
                 ControlsDictionary.Remove(code);
@@ -125,7 +125,7 @@ namespace CartridgesManager {
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static ButtonWithBarcode GetAssociatedControl(string code) {
+        public static BarcodeButton GetAssociatedControl(string code) {
             if (!ControlsDictionary.ContainsKey(code)) {
                 throw new ArgumentException("Элемент с кодом '" + code + "' не зарегистрирован");
             }

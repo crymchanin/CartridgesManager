@@ -23,15 +23,14 @@
         /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent() {
-            this.ViewInfoButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.AddNewCartridgeButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.ServiceButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.NewSessionButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.MainBarcodeBox = new CartridgesManager.Controls.BarcodeBox();
-            this.ViewCartridgesButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.CloseSessionButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.FullScreenButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.ExitButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.ViewInfoButton = new CartridgesManager.Controls.BarcodeButton();
+            this.AddNewCartridgeButton = new CartridgesManager.Controls.BarcodeButton();
+            this.ServiceButton = new CartridgesManager.Controls.BarcodeButton();
+            this.NewSessionButton = new CartridgesManager.Controls.BarcodeButton();
+            this.ViewCartridgesButton = new CartridgesManager.Controls.BarcodeButton();
+            this.CloseSessionButton = new CartridgesManager.Controls.BarcodeButton();
+            this.FullScreenButton = new CartridgesManager.Controls.BarcodeButton();
+            this.ExitButton = new CartridgesManager.Controls.BarcodeButton();
             this.SuspendLayout();
             // 
             // ViewInfoButton
@@ -39,6 +38,7 @@
             this.ViewInfoButton.BackColor = System.Drawing.Color.White;
             this.ViewInfoButton.Barcode = "";
             this.ViewInfoButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ViewInfoButton.ButtonFontSize = 14.25F;
             this.ViewInfoButton.ButtonImage = global::CartridgesManager.Properties.Resources.cartridge_64;
             this.ViewInfoButton.ButtonText = "Просмотр информации о картридже";
             this.ViewInfoButton.CompactMode = false;
@@ -53,6 +53,7 @@
             this.AddNewCartridgeButton.BackColor = System.Drawing.Color.White;
             this.AddNewCartridgeButton.Barcode = "";
             this.AddNewCartridgeButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.AddNewCartridgeButton.ButtonFontSize = 14.25F;
             this.AddNewCartridgeButton.ButtonImage = global::CartridgesManager.Properties.Resources.send_64;
             this.AddNewCartridgeButton.ButtonText = "Добавить новый картридж";
             this.AddNewCartridgeButton.CompactMode = false;
@@ -67,6 +68,7 @@
             this.ServiceButton.BackColor = System.Drawing.Color.White;
             this.ServiceButton.Barcode = "";
             this.ServiceButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ServiceButton.ButtonFontSize = 14.25F;
             this.ServiceButton.ButtonImage = global::CartridgesManager.Properties.Resources.service_64;
             this.ServiceButton.ButtonText = "Обслуживание картриджа";
             this.ServiceButton.CompactMode = false;
@@ -81,6 +83,7 @@
             this.NewSessionButton.BackColor = System.Drawing.Color.White;
             this.NewSessionButton.Barcode = "";
             this.NewSessionButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.NewSessionButton.ButtonFontSize = 14.25F;
             this.NewSessionButton.ButtonImage = global::CartridgesManager.Properties.Resources.worker_64;
             this.NewSessionButton.ButtonText = "Открыть смену";
             this.NewSessionButton.CompactMode = false;
@@ -90,20 +93,12 @@
             this.NewSessionButton.Size = new System.Drawing.Size(207, 215);
             this.NewSessionButton.TabIndex = 0;
             // 
-            // MainBarcodeBox
-            // 
-            this.MainBarcodeBox.BackColor = System.Drawing.Color.White;
-            this.MainBarcodeBox.Location = new System.Drawing.Point(259, 571);
-            this.MainBarcodeBox.Name = "MainBarcodeBox";
-            this.MainBarcodeBox.Size = new System.Drawing.Size(450, 80);
-            this.MainBarcodeBox.TabIndex = 16;
-            this.MainBarcodeBox.Visible = false;
-            // 
             // ViewCartridgesButton
             // 
             this.ViewCartridgesButton.BackColor = System.Drawing.Color.White;
             this.ViewCartridgesButton.Barcode = "";
             this.ViewCartridgesButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ViewCartridgesButton.ButtonFontSize = 14.25F;
             this.ViewCartridgesButton.ButtonImage = global::CartridgesManager.Properties.Resources.search_64;
             this.ViewCartridgesButton.ButtonText = "Просмотр картриджей на отделении";
             this.ViewCartridgesButton.CompactMode = false;
@@ -118,6 +113,7 @@
             this.CloseSessionButton.BackColor = System.Drawing.Color.White;
             this.CloseSessionButton.Barcode = "";
             this.CloseSessionButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.CloseSessionButton.ButtonFontSize = 14.25F;
             this.CloseSessionButton.ButtonImage = global::CartridgesManager.Properties.Resources.close_64;
             this.CloseSessionButton.ButtonText = "Закрытие смены";
             this.CloseSessionButton.CompactMode = false;
@@ -132,6 +128,7 @@
             this.FullScreenButton.BackColor = System.Drawing.Color.White;
             this.FullScreenButton.Barcode = "";
             this.FullScreenButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.FullScreenButton.ButtonFontSize = 14.25F;
             this.FullScreenButton.ButtonImage = global::CartridgesManager.Properties.Resources.fullscreen_64;
             this.FullScreenButton.ButtonText = "Полноэкранный режим (вкл/выкл)";
             this.FullScreenButton.CompactMode = false;
@@ -146,6 +143,7 @@
             this.ExitButton.BackColor = System.Drawing.Color.White;
             this.ExitButton.Barcode = "";
             this.ExitButton.ButtonBackColor = System.Drawing.Color.DimGray;
+            this.ExitButton.ButtonFontSize = 14.25F;
             this.ExitButton.ButtonImage = global::CartridgesManager.Properties.Resources.shutdown_64;
             this.ExitButton.ButtonText = "Выйти из программы";
             this.ExitButton.CompactMode = false;
@@ -167,7 +165,6 @@
             this.Controls.Add(this.AddNewCartridgeButton);
             this.Controls.Add(this.ServiceButton);
             this.Controls.Add(this.NewSessionButton);
-            this.Controls.Add(this.MainBarcodeBox);
             this.Name = "MainControl";
             this.Size = new System.Drawing.Size(966, 740);
             this.ResumeLayout(false);
@@ -175,14 +172,13 @@
         }
 
         #endregion
-        private BarcodeBox MainBarcodeBox;
-        private ButtonWithBarcode NewSessionButton;
-        private ButtonWithBarcode ServiceButton;
-        private ButtonWithBarcode AddNewCartridgeButton;
-        private ButtonWithBarcode ViewInfoButton;
-        private ButtonWithBarcode ViewCartridgesButton;
-        private ButtonWithBarcode CloseSessionButton;
-        private ButtonWithBarcode FullScreenButton;
-        private ButtonWithBarcode ExitButton;
+        private BarcodeButton NewSessionButton;
+        private BarcodeButton ServiceButton;
+        private BarcodeButton AddNewCartridgeButton;
+        private BarcodeButton ViewInfoButton;
+        private BarcodeButton ViewCartridgesButton;
+        private BarcodeButton CloseSessionButton;
+        private BarcodeButton FullScreenButton;
+        private BarcodeButton ExitButton;
     }
 }

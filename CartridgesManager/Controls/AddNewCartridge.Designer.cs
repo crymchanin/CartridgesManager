@@ -37,8 +37,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.LocationsBox = new CartridgesManager.Controls.AlphabetBox();
-            this.SaveButton = new CartridgesManager.Controls.ButtonWithBarcode();
-            this.CloseTabButton = new CartridgesManager.Controls.ButtonWithBarcode();
+            this.SaveButton = new CartridgesManager.Controls.BarcodeButton();
+            this.CloseTabButton = new CartridgesManager.Controls.BarcodeButton();
             this.SuspendLayout();
             // 
             // CodeBox
@@ -242,7 +242,7 @@
         private System.Windows.Forms.TextBox CodeBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private ButtonWithBarcode CloseTabButton;
+        private BarcodeButton CloseTabButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox DateBox;
         private System.Windows.Forms.Label label4;
@@ -252,7 +252,7 @@
         private System.Windows.Forms.FlowLayoutPanel ModelsLayoutPanel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private ButtonWithBarcode SaveButton;
+        private BarcodeButton SaveButton;
         private AlphabetBox LocationsBox;
     }
 }

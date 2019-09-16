@@ -6,12 +6,14 @@ using System.Windows.Forms;
 
 
 namespace CartridgesManager.Controls {
-    public partial class ButtonWithBarcode : UserControl {
+    public partial class BarcodeButton : UserControl {
 
         private string _barcode = string.Empty;
         private object _customData;
         private bool _compactMode;
         private Image _buttonOldImage;
+        private bool _checked;
+        private Color _buttonBackColor;
 
 
         /// <summary>
@@ -27,12 +29,13 @@ namespace CartridgesManager.Controls {
 
 
         /// <summary>
-        /// Создает новый экземпляр класса ButtonWithBarcode
+        /// Создает новый экземпляр класса BarcodeButton
         /// </summary>
-        public ButtonWithBarcode() {
+        public BarcodeButton() {
             InitializeComponent();
 
             Disposed += ButtonWithBarcode_Disposed;
+            _buttonBackColor = FlatButton.BackColor;
         }
 
         private void ButtonWithBarcode_Disposed(object sender, EventArgs e) {
@@ -170,12 +173,22 @@ namespace CartridgesManager.Controls {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color ButtonBackColor {
             get {
-                return FlatButton.BackColor;
+                return _buttonBackColor;
             }
             set {
-                FlatButton.BackColor = value;
+                _buttonBackColor = value;
+                FlatButton.BackColor = _buttonBackColor;
             }
         }
+
+        /// <summary>
+        /// Возвращает или задает цвет фона кнопки в выбранном состоянии
+        /// </summary>
+        [Category("Appearance")]
+        [Description("Цвет фона кнопки в выбранном состоянии")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public Color ButtonCheckedBackColor { get; set; } = Color.Green;
 
         /// <summary>
         /// Возвращает или задает размер шрифта кнопки
@@ -190,6 +203,23 @@ namespace CartridgesManager.Controls {
             }
             set {
                 FlatButton.Font = new Font("Microsoft Sans Serif", value, FontStyle.Bold, GraphicsUnit.Point, 204);
+            }
+        }
+
+        /// <summary>
+        /// Возвращает или задает значение отмечена ли кнопка выбранной или нет
+        /// </summary>
+        [Category("Appearance")]
+        [Description("Определяет отмечена ли кнопка выбранной или нет")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public bool ButtonChecked {
+            get {
+                return _checked;
+            }
+            set {
+                _checked = value;
+                FlatButton.BackColor = (_checked) ? ButtonCheckedBackColor : _buttonBackColor;
             }
         }
     }

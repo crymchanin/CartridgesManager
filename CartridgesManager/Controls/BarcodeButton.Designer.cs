@@ -1,5 +1,5 @@
 ﻿namespace CartridgesManager.Controls {
-    partial class ButtonWithBarcode {
+    partial class BarcodeButton {
         /// <summary> 
         /// Обязательная переменная конструктора.
         /// </summary>
