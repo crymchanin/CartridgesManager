@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace CartridgesManager.Controls {
-    public class BarcodeButtonCollection : IList<LinearButton>, ICollection<LinearButton>, IEnumerable<LinearButton> {
+    public class CodeButtonCollection : IList<BaseCodeButton>, ICollection<BaseCodeButton>, IEnumerable<BaseCodeButton> {
 
         private ArrayList _buttonList = new ArrayList();
 
@@ -16,83 +12,83 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="index">Отсчитываемый от нуля индекс элемента, который требуется возвратить или задать.</param>
         /// <returns>Элемент, расположенный по указанному индексу</returns>
-        public LinearButton this[int index] { get => (LinearButton)_buttonList[index]; set => _buttonList[index] = value; }
+        public BaseCodeButton this[int index] { get => (BaseCodeButton)_buttonList[index]; set => _buttonList[index] = value; }
 
         /// <summary>
-        /// Возвращает число элементов, содержащихся в BarcodeButtonCollection
+        /// Возвращает число элементов, содержащихся в CodeButtonCollection
         /// </summary>
         public int Count => _buttonList.Count;
 
         /// <summary>
-        /// Получает значение, указывающее, является ли объект BarcodeButtonCollection доступным только для чтения
+        /// Получает значение, указывающее, является ли объект CodeButtonCollection доступным только для чтения
         /// </summary>
         public bool IsReadOnly => _buttonList.IsReadOnly;
 
         /// <summary>
-        /// Добавляет объект в конец очереди BarcodeButtonCollection
+        /// Добавляет объект в конец очереди CodeButtonCollection
         /// </summary>
-        /// <param name="item">Объект BarcodeButton, добавляемый в конец коллекции BarcodeButtonCollection. Допускается значение null</param>
-        public void Add(LinearButton item) {
+        /// <param name="item">Объект BaseCodeButton, добавляемый в конец коллекции CodeButtonCollection. Допускается значение null</param>
+        public void Add(BaseCodeButton item) {
             _buttonList.Add(item);
         }
 
         /// <summary>
-        /// Удаляет все элементы из коллекции BarcodeButtonCollection
+        /// Удаляет все элементы из коллекции CodeButtonCollection
         /// </summary>
         public void Clear() {
             _buttonList.Clear();
         }
 
         /// <summary>
-        /// Определяет, входит ли элемент в коллекцию BarcodeButtonCollection
+        /// Определяет, входит ли элемент в коллекцию CodeButtonCollection
         /// </summary>
-        /// <param name="item">Объект BarcodeButton, который требуется найти в коллекции BarcodeButtonCollection. Допускается значение null</param>
+        /// <param name="item">Объект BaseCodeButton, который требуется найти в коллекции CodeButtonCollection. Допускается значение null</param>
         /// <returns></returns>
-        public bool Contains(LinearButton item) {
+        public bool Contains(BaseCodeButton item) {
             return _buttonList.Contains(item);
         }
 
         /// <summary>
-        /// Копирует целый массив BarcodeButtonCollection в совместимый одномерный массив BarcodeButtonCollection, начиная с заданного индекса целевого массива
+        /// Копирует целый массив CodeButtonCollection в совместимый одномерный массив CodeButtonCollection, начиная с заданного индекса целевого массива
         /// </summary>
-        /// <param name="array">Одномерный массив BarcodeButtonCollection, в который копируются элементы из интерфейса . Массив BarcodeButtonCollection должен иметь индексацию, начинающуюся с нуля</param>
+        /// <param name="array">Одномерный массив CodeButtonCollection, в который копируются элементы из интерфейса . Массив CodeButtonCollection должен иметь индексацию, начинающуюся с нуля</param>
         /// <param name="arrayIndex">Отсчитываемый от нуля индекс в массиве array, указывающий начало копирования</param>
-        public void CopyTo(LinearButton[] array, int arrayIndex) {
+        public void CopyTo(BaseCodeButton[] array, int arrayIndex) {
             _buttonList.CopyTo(array, arrayIndex);
         }
 
         /// <summary>
-        /// Возвращает перечислитель для всего BarcodeButtonCollection
+        /// Возвращает перечислитель для всего CodeButtonCollection
         /// </summary>
-        /// <returns>System.Collections.IEnumerator Для всего BarcodeButtonCollection</returns>
-        public IEnumerator<LinearButton> GetEnumerator() {
-            return (IEnumerator<LinearButton>)((IEnumerable)this).GetEnumerator();
+        /// <returns>System.Collections.IEnumerator Для всего CodeButtonCollection</returns>
+        public IEnumerator<BaseCodeButton> GetEnumerator() {
+            return (IEnumerator<BaseCodeButton>)((IEnumerable)this).GetEnumerator();
         }
 
         /// <summary>
-        /// Осуществляет поиск указанного объекта BarcodeButton и возвращает отсчитываемый от нуля индекс первого вхождения в коллекцию BarcodeButtonCollection
+        /// Осуществляет поиск указанного объекта BaseCodeButton и возвращает отсчитываемый от нуля индекс первого вхождения в коллекцию CodeButtonCollection
         /// </summary>
-        /// <param name="item">Объект BarcodeButton, который требуется найти в коллекции BarcodeButtonCollection</param>
-        /// <returns>Индекс (с нуля) первого вхождения параметра item, если оно найдено в коллекции BarcodeButtonCollection; в противном случае -1</returns>
-        public int IndexOf(LinearButton item) {
+        /// <param name="item">Объект BaseCodeButton, который требуется найти в коллекции CodeButtonCollection</param>
+        /// <returns>Индекс (с нуля) первого вхождения параметра item, если оно найдено в коллекции CodeButtonCollection; в противном случае -1</returns>
+        public int IndexOf(BaseCodeButton item) {
             return _buttonList.IndexOf(item);
         }
 
         /// <summary>
-        /// Вставляет элемент в коллекцию BarcodeButtonCollection по указанному индексу
+        /// Вставляет элемент в коллекцию CodeButtonCollection по указанному индексу
         /// </summary>
         /// <param name="index">Отсчитываемый от нуля индекс, по которому следует вставить элемент item</param>
-        /// <param name="item">Вставляемый объект BarcodeButton. Допускается значение null</param>
-        public void Insert(int index, LinearButton item) {
+        /// <param name="item">Вставляемый объект BaseCodeButton. Допускается значение null</param>
+        public void Insert(int index, BaseCodeButton item) {
             _buttonList.Insert(index, item);
         }
 
         /// <summary>
-        /// Удаляет первое вхождение указанного объекта из коллекции BarcodeButtonCollection
+        /// Удаляет первое вхождение указанного объекта из коллекции CodeButtonCollection
         /// </summary>
-        /// <param name="item">Элемент BarcodeButton, который требуется удалить из BarcodeButtonCollection</param>
+        /// <param name="item">Элемент BaseCodeButton, который требуется удалить из CodeButtonCollection</param>
         /// <returns></returns>
-        public bool Remove(LinearButton item) {
+        public bool Remove(BaseCodeButton item) {
             int index = IndexOf(item);
             if (index >= 0) {
                 _buttonList.RemoveAt(index);
@@ -104,7 +100,7 @@ namespace CartridgesManager.Controls {
         }
 
         /// <summary>
-        /// Удаляет элемент списка BarcodeButtonCollection с указанным индексом
+        /// Удаляет элемент списка CodeButtonCollection с указанным индексом
         /// </summary>
         /// <param name="index">Индекс (с нуля) элемента, который требуется удалить</param>
         public void RemoveAt(int index) {
@@ -112,9 +108,9 @@ namespace CartridgesManager.Controls {
         }
 
         /// <summary>
-        /// Возвращает перечислитель для всего BarcodeButtonCollection
+        /// Возвращает перечислитель для всего CodeButtonCollection
         /// </summary>
-        /// <returns>System.Collections.IEnumerator Для всего BarcodeButtonCollection</returns>
+        /// <returns>System.Collections.IEnumerator Для всего CodeButtonCollection</returns>
         IEnumerator IEnumerable.GetEnumerator() {
             return _buttonList.GetEnumerator();
         }

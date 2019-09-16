@@ -14,7 +14,7 @@ namespace CartridgesManager.Controls {
 
         private const int NAVIGATION_PANEL_MINIMUM_HEIGHT = 150;
 
-        private BarcodeButtonCollection _buttons;
+        private CodeButtonCollection _buttons;
 
 
         public PaginationControl() {
@@ -41,7 +41,7 @@ namespace CartridgesManager.Controls {
 
         public int CurrentPageIndex { get; set; }
 
-        public BarcodeButtonCollection Buttons {
+        public CodeButtonCollection Buttons {
             get {
                 return _buttons;
             }

@@ -23,6 +23,6 @@
         /// <summary>
         /// Тип штрихкода, который будет отображен в кнопке
         /// </summary>
-        CodeButtonType BarcodeType { get; set; }
+        CodeButtonType BarcodeType { get; }
     }
 }
