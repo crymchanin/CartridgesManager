@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace CartridgesManager.Controls {
     public class QRButton : BaseCodeButton, ICodeButton {
+
+        public QRButton() : base() {
+
+        }
+
+
         string ICodeButton.Barcode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         event EventHandler ICodeButton.ButtonClick {

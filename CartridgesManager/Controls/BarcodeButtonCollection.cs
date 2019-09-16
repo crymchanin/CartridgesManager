@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 
 namespace CartridgesManager.Controls {
-    public class BarcodeButtonCollection : IList<BarcodeButton>, ICollection<BarcodeButton>, IEnumerable<BarcodeButton> {
+    public class BarcodeButtonCollection : IList<LinearButton>, ICollection<LinearButton>, IEnumerable<LinearButton> {
 
         private ArrayList _buttonList = new ArrayList();
 
@@ -16,7 +16,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="index">Отсчитываемый от нуля индекс элемента, который требуется возвратить или задать.</param>
         /// <returns>Элемент, расположенный по указанному индексу</returns>
-        public BarcodeButton this[int index] { get => (BarcodeButton)_buttonList[index]; set => _buttonList[index] = value; }
+        public LinearButton this[int index] { get => (LinearButton)_buttonList[index]; set => _buttonList[index] = value; }
 
         /// <summary>
         /// Возвращает число элементов, содержащихся в BarcodeButtonCollection
@@ -32,7 +32,7 @@ namespace CartridgesManager.Controls {
         /// Добавляет объект в конец очереди BarcodeButtonCollection
         /// </summary>
         /// <param name="item">Объект BarcodeButton, добавляемый в конец коллекции BarcodeButtonCollection. Допускается значение null</param>
-        public void Add(BarcodeButton item) {
+        public void Add(LinearButton item) {
             _buttonList.Add(item);
         }
 
@@ -48,7 +48,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="item">Объект BarcodeButton, который требуется найти в коллекции BarcodeButtonCollection. Допускается значение null</param>
         /// <returns></returns>
-        public bool Contains(BarcodeButton item) {
+        public bool Contains(LinearButton item) {
             return _buttonList.Contains(item);
         }
 
@@ -57,7 +57,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="array">Одномерный массив BarcodeButtonCollection, в который копируются элементы из интерфейса . Массив BarcodeButtonCollection должен иметь индексацию, начинающуюся с нуля</param>
         /// <param name="arrayIndex">Отсчитываемый от нуля индекс в массиве array, указывающий начало копирования</param>
-        public void CopyTo(BarcodeButton[] array, int arrayIndex) {
+        public void CopyTo(LinearButton[] array, int arrayIndex) {
             _buttonList.CopyTo(array, arrayIndex);
         }
 
@@ -65,8 +65,8 @@ namespace CartridgesManager.Controls {
         /// Возвращает перечислитель для всего BarcodeButtonCollection
         /// </summary>
         /// <returns>System.Collections.IEnumerator Для всего BarcodeButtonCollection</returns>
-        public IEnumerator<BarcodeButton> GetEnumerator() {
-            return (IEnumerator<BarcodeButton>)((IEnumerable)this).GetEnumerator();
+        public IEnumerator<LinearButton> GetEnumerator() {
+            return (IEnumerator<LinearButton>)((IEnumerable)this).GetEnumerator();
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="item">Объект BarcodeButton, который требуется найти в коллекции BarcodeButtonCollection</param>
         /// <returns>Индекс (с нуля) первого вхождения параметра item, если оно найдено в коллекции BarcodeButtonCollection; в противном случае -1</returns>
-        public int IndexOf(BarcodeButton item) {
+        public int IndexOf(LinearButton item) {
             return _buttonList.IndexOf(item);
         }
 
@@ -83,7 +83,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="index">Отсчитываемый от нуля индекс, по которому следует вставить элемент item</param>
         /// <param name="item">Вставляемый объект BarcodeButton. Допускается значение null</param>
-        public void Insert(int index, BarcodeButton item) {
+        public void Insert(int index, LinearButton item) {
             _buttonList.Insert(index, item);
         }
 
@@ -92,7 +92,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="item">Элемент BarcodeButton, который требуется удалить из BarcodeButtonCollection</param>
         /// <returns></returns>
-        public bool Remove(BarcodeButton item) {
+        public bool Remove(LinearButton item) {
             int index = IndexOf(item);
             if (index >= 0) {
                 _buttonList.RemoveAt(index);

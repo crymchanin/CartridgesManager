@@ -35,11 +35,11 @@ namespace CartridgesManager.Controls {
             SaveButton.Barcode = SaveButton.RegisterControl((c) => this.NavigateToMainPage());
 
             GuiController.ControlCallback SessionCallback = delegate (string code) {
-                BarcodeButton sender = GuiController.GetAssociatedControl(code);
+                LinearButton sender = GuiController.GetAssociatedControl(code);
                 sender.ButtonBackColor = Color.Green;
                 foreach (Control ctrl in sender.Parent.Controls) {
-                    if (ctrl is BarcodeButton) {
-                        BarcodeButton child = ctrl as BarcodeButton;
+                    if (ctrl is LinearButton) {
+                        LinearButton child = ctrl as LinearButton;
                         if (child.Barcode != code && child.ButtonBackColor == Color.Green) {
                             child.ButtonBackColor = Color.DimGray;
                         }
@@ -48,10 +48,10 @@ namespace CartridgesManager.Controls {
             };
 
             string[] types = DatabaseHelper.GetCartridgeTypes().ToArray();
-            List<BarcodeButton> buttons = new List<BarcodeButton>();
+            List<LinearButton> buttons = new List<LinearButton>();
             int index = 0;
             foreach (string type in types) {
-                BarcodeButton button = new BarcodeButton();
+                LinearButton button = new LinearButton();
                 button.ButtonText = type;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
@@ -66,10 +66,10 @@ namespace CartridgesManager.Controls {
             TypeLayoutPanel.Controls.AddRange(buttons.ToArray());
 
             string[] models = DatabaseHelper.GetCartridgeModels().ToArray();
-            buttons = new List<BarcodeButton>();
+            buttons = new List<LinearButton>();
             index = 0;
             foreach (string model in models) {
-                BarcodeButton button = new BarcodeButton();
+                LinearButton button = new LinearButton();
                 button.ButtonText = model;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
@@ -86,10 +86,10 @@ namespace CartridgesManager.Controls {
             LocationsBox.LoadContentPage += delegate (AlphabetBox sender, char[] words) {
                 string[] locations = DatabaseHelper.GetCartridgeLocations().ToArray();
                 locations = locations.Where(x => words.Contains(char.ToLowerInvariant(x.First()))).ToArray();
-                buttons = new List<BarcodeButton>();
+                buttons = new List<LinearButton>();
                 index = 0;
                 foreach (string location in locations) {
-                    BarcodeButton button = new BarcodeButton();
+                    LinearButton button = new LinearButton();
                     button.ButtonText = location;
                     button.Barcode = button.RegisterControl(SessionCallback);
                     button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
@@ -101,7 +101,7 @@ namespace CartridgesManager.Controls {
                     buttons.Add(button);
                     index++;
                 }
-                BarcodeButton backButton = new BarcodeButton();
+                LinearButton backButton = new LinearButton();
                 backButton.ButtonText = "Вернуться назад";
                 backButton.ButtonImage = Properties.Resources.back_64;
                 backButton.Barcode = backButton.RegisterControl((c) => sender.LoadMainPage());

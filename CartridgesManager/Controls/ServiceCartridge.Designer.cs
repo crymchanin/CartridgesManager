@@ -36,8 +36,8 @@
             this.CommentBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ModelBox = new System.Windows.Forms.TextBox();
-            this.SaveButton = new CartridgesManager.Controls.BarcodeButton();
-            this.CloseTabButton = new CartridgesManager.Controls.BarcodeButton();
+            this.SaveButton = new CartridgesManager.Controls.LinearButton();
+            this.CloseTabButton = new CartridgesManager.Controls.LinearButton();
             this.ContentLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.paginationControl1 = new CartridgesManager.Controls.PaginationControl();
@@ -297,8 +297,8 @@
         private System.Windows.Forms.TextBox CommentBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox ModelBox;
-        private BarcodeButton SaveButton;
-        private BarcodeButton CloseTabButton;
+        private LinearButton SaveButton;
+        private LinearButton CloseTabButton;
         private System.Windows.Forms.FlowLayoutPanel ContentLayoutPanel;
         private System.Windows.Forms.Label label8;
         private PaginationControl paginationControl1;

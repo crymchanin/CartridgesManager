@@ -24,15 +24,15 @@ namespace CartridgesManager.Controls {
             WorkerBox.Text = SessionManager.WorkerName;
 
             GuiController.ControlCallback SessionCallback = delegate (string code) {
-                BarcodeButton sender = GuiController.GetAssociatedControl(code);
+                LinearButton sender = GuiController.GetAssociatedControl(code);
                 sender.ButtonChecked = !sender.ButtonChecked;
             };
 
             string[] actions = DatabaseHelper.GetCartridgeActionTypes().ToArray(); // !!!!!
-            List<BarcodeButton> buttons = new List<BarcodeButton>();
+            List<LinearButton> buttons = new List<LinearButton>();
             int index = 0;
             foreach (string action in actions) {
-                BarcodeButton button = new BarcodeButton();
+                LinearButton button = new LinearButton();
                 button.ButtonText = action;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;

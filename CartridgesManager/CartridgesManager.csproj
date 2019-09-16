@@ -86,13 +86,16 @@
     <Compile Include="Controls\AlphabetBox.Designer.cs">
       <DependentUpon>AlphabetBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\BarcodeButton.cs">
+    <Compile Include="Controls\CodeButtonType.cs" />
+    <Compile Include="Controls\LinearButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\BarcodeButton.Designer.cs">
-      <DependentUpon>BarcodeButton.cs</DependentUpon>
+    <Compile Include="Controls\LinearButton.Designer.cs">
+      <DependentUpon>LinearButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\BaseCodeButton.cs" />
+    <Compile Include="Controls\BaseCodeButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ICodeButton.cs" />
     <Compile Include="Controls\MainControl.cs">
       <SubType>UserControl</SubType>
@@ -106,7 +109,9 @@
     <Compile Include="Controls\PaginationControl.Designer.cs">
       <DependentUpon>PaginationControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\QRButton.cs" />
+    <Compile Include="Controls\QRButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ServiceCartridge.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,8 +148,8 @@
     <EmbeddedResource Include="Controls\AlphabetBox.resx">
       <DependentUpon>AlphabetBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\BarcodeButton.resx">
-      <DependentUpon>BarcodeButton.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\LinearButton.resx">
+      <DependentUpon>LinearButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MainControl.resx">
       <DependentUpon>MainControl.cs</DependentUpon>

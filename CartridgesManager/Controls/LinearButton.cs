@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 
 namespace CartridgesManager.Controls {
-    public partial class BarcodeButton : UserControl {
+    public partial class LinearButton : UserControl {
 
         private string _barcode = string.Empty;
         private object _customData;
@@ -31,7 +31,7 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Создает новый экземпляр класса BarcodeButton
         /// </summary>
-        public BarcodeButton() {
+        public LinearButton() {
             InitializeComponent();
 
             Disposed += ButtonWithBarcode_Disposed;

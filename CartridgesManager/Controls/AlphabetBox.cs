@@ -49,14 +49,14 @@ namespace CartridgesManager.Controls {
 
             GuiController.ControlCallback callback = delegate (string code) {
                 ContentLayoutPanel.Controls.Clear();
-                BarcodeButton sender = GuiController.GetAssociatedControl(code);
+                LinearButton sender = GuiController.GetAssociatedControl(code);
                 LoadContentPage?.Invoke(this, sender.GetCustomData<char[]>());
             };
 
-            List<BarcodeButton> buttons = new List<BarcodeButton>();
+            List<LinearButton> buttons = new List<LinearButton>();
             int index = 0;
             foreach (char[] words in alphabet) {
-                BarcodeButton button = new BarcodeButton();
+                LinearButton button = new LinearButton();
                 button.ButtonText = string.Join("", words).ToUpper();
 
                 button.Barcode = button.RegisterControl(callback);

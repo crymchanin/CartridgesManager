@@ -23,14 +23,14 @@
         /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent() {
-            this.ViewInfoButton = new CartridgesManager.Controls.BarcodeButton();
-            this.AddNewCartridgeButton = new CartridgesManager.Controls.BarcodeButton();
-            this.ServiceButton = new CartridgesManager.Controls.BarcodeButton();
-            this.NewSessionButton = new CartridgesManager.Controls.BarcodeButton();
-            this.ViewCartridgesButton = new CartridgesManager.Controls.BarcodeButton();
-            this.CloseSessionButton = new CartridgesManager.Controls.BarcodeButton();
-            this.FullScreenButton = new CartridgesManager.Controls.BarcodeButton();
-            this.ExitButton = new CartridgesManager.Controls.BarcodeButton();
+            this.ViewInfoButton = new CartridgesManager.Controls.LinearButton();
+            this.AddNewCartridgeButton = new CartridgesManager.Controls.LinearButton();
+            this.ServiceButton = new CartridgesManager.Controls.LinearButton();
+            this.NewSessionButton = new CartridgesManager.Controls.LinearButton();
+            this.ViewCartridgesButton = new CartridgesManager.Controls.LinearButton();
+            this.CloseSessionButton = new CartridgesManager.Controls.LinearButton();
+            this.FullScreenButton = new CartridgesManager.Controls.LinearButton();
+            this.ExitButton = new CartridgesManager.Controls.LinearButton();
             this.SuspendLayout();
             // 
             // ViewInfoButton
@@ -172,13 +172,13 @@
         }
 
         #endregion
-        private BarcodeButton NewSessionButton;
-        private BarcodeButton ServiceButton;
-        private BarcodeButton AddNewCartridgeButton;
-        private BarcodeButton ViewInfoButton;
-        private BarcodeButton ViewCartridgesButton;
-        private BarcodeButton CloseSessionButton;
-        private BarcodeButton FullScreenButton;
-        private BarcodeButton ExitButton;
+        private LinearButton NewSessionButton;
+        private LinearButton ServiceButton;
+        private LinearButton AddNewCartridgeButton;
+        private LinearButton ViewInfoButton;
+        private LinearButton ViewCartridgesButton;
+        private LinearButton CloseSessionButton;
+        private LinearButton FullScreenButton;
+        private LinearButton ExitButton;
     }
 }

@@ -42,7 +42,7 @@
             this.WorkerNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CommentHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NumberBox = new System.Windows.Forms.TextBox();
-            this.CloseTabButton = new CartridgesManager.Controls.BarcodeButton();
+            this.CloseTabButton = new CartridgesManager.Controls.LinearButton();
             this.SuspendLayout();
             // 
             // NumberLabel
@@ -277,7 +277,7 @@
         private System.Windows.Forms.ColumnHeader PartCountHeader;
         private System.Windows.Forms.ColumnHeader WorkerNameHeader;
         private System.Windows.Forms.ColumnHeader CommentHeader;
-        private BarcodeButton CloseTabButton;
+        private LinearButton CloseTabButton;
         private System.Windows.Forms.TextBox NumberBox;
     }
 }

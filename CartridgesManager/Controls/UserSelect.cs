@@ -29,10 +29,10 @@ namespace CartridgesManager.Controls {
                     this.NavigateToMainPage();
                 };
 
-                List<BarcodeButton> buttons = new List<BarcodeButton>();
+                List<LinearButton> buttons = new List<LinearButton>();
                 int index = 0;
                 foreach (string user in AppHelper.Configuration.Users) {
-                    BarcodeButton button = new BarcodeButton();
+                    LinearButton button = new LinearButton();
                     button.ButtonText = user;
                     button.ButtonImage = Properties.Resources.sad_64;
                     button.Barcode = button.RegisterControl(SessionCallback);

@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.NavPanel = new System.Windows.Forms.Panel();
-            this.CloseButton = new CartridgesManager.Controls.BarcodeButton();
-            this.ForwardButton = new CartridgesManager.Controls.BarcodeButton();
-            this.BackwardButton = new CartridgesManager.Controls.BarcodeButton();
+            this.CloseButton = new CartridgesManager.Controls.LinearButton();
+            this.ForwardButton = new CartridgesManager.Controls.LinearButton();
+            this.BackwardButton = new CartridgesManager.Controls.LinearButton();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.NavPanel.SuspendLayout();
@@ -137,8 +137,8 @@
         private System.Windows.Forms.Panel NavPanel;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.FlowLayoutPanel ContentLayoutPanel;
-        private BarcodeButton CloseButton;
-        private BarcodeButton ForwardButton;
-        private BarcodeButton BackwardButton;
+        private LinearButton CloseButton;
+        private LinearButton ForwardButton;
+        private LinearButton BackwardButton;
     }
 }

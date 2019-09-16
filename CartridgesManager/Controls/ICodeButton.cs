@@ -1,13 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-
-
-namespace CartridgesManager.Controls {
+﻿namespace CartridgesManager.Controls {
     public interface ICodeButton {
-        /// <summary>
-        /// Происходит завершении чтения штрихкода
-        /// </summary>
-        event EventHandler ButtonClick;
 
         /// <summary>
         /// Возвращает пользовательские данные связанные с тукущим элементом управления
@@ -26,10 +18,11 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Возвращает или задает штрихкод кнопки
         /// </summary>
-        [Category("Appearance")]
-        [Description("Штрихкод кнопки")]
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         string Barcode { get; set; }
+
+        /// <summary>
+        /// Тип штрихкода, который будет отображен в кнопке
+        /// </summary>
+        CodeButtonType BarcodeType { get; set; }
     }
 }
