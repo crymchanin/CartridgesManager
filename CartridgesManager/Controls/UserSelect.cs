@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 
@@ -33,8 +34,9 @@ namespace CartridgesManager.Controls {
                 int index = 0;
                 foreach (string user in AppHelper.Configuration.Users) {
                     LinearButton button = new LinearButton();
-                    button.ButtonText = user;
-                    button.ButtonImage = Properties.Resources.sad_64;
+                    button.Text = user;
+                    button.BackColor = Color.DimGray;
+                    button.Image = Properties.Resources.sad_64;
                     button.Barcode = button.RegisterControl(SessionCallback);
                     button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                     button.Height = ContentHeight;

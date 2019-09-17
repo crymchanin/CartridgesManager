@@ -39,6 +39,7 @@
             this.LocationsBox = new CartridgesManager.Controls.AlphabetBox();
             this.SaveButton = new CartridgesManager.Controls.LinearButton();
             this.CloseTabButton = new CartridgesManager.Controls.LinearButton();
+            this.qrButton1 = new CartridgesManager.Controls.QRButton();
             this.SuspendLayout();
             // 
             // CodeBox
@@ -179,13 +180,12 @@
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.BackColor = System.Drawing.Color.White;
             this.SaveButton.Barcode = "";
-            this.SaveButton.ButtonBackColor = System.Drawing.Color.MediumAquamarine;
-            this.SaveButton.ButtonFontSize = 9.25F;
-            this.SaveButton.ButtonImage = ((System.Drawing.Image)(resources.GetObject("SaveButton.ButtonImage")));
-            this.SaveButton.ButtonText = "Сохранить данные";
+            this.SaveButton.Checked = false;
+            this.SaveButton.CheckedBackColor = System.Drawing.Color.Green;
             this.SaveButton.CompactMode = true;
+            this.SaveButton.FontSize = 9.25F;
+            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
             this.SaveButton.Location = new System.Drawing.Point(962, 554);
             this.SaveButton.MinimumSize = new System.Drawing.Size(207, 105);
             this.SaveButton.Name = "SaveButton";
@@ -195,24 +195,34 @@
             // CloseTabButton
             // 
             this.CloseTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseTabButton.BackColor = System.Drawing.Color.White;
             this.CloseTabButton.Barcode = "";
-            this.CloseTabButton.ButtonBackColor = System.Drawing.Color.LightSkyBlue;
-            this.CloseTabButton.ButtonFontSize = 9.25F;
-            this.CloseTabButton.ButtonImage = ((System.Drawing.Image)(resources.GetObject("CloseTabButton.ButtonImage")));
-            this.CloseTabButton.ButtonText = "Закрыть окно";
+            this.CloseTabButton.Checked = false;
+            this.CloseTabButton.CheckedBackColor = System.Drawing.Color.Green;
             this.CloseTabButton.CompactMode = true;
+            this.CloseTabButton.FontSize = 9.25F;
+            this.CloseTabButton.Image = ((System.Drawing.Image)(resources.GetObject("CloseTabButton.Image")));
             this.CloseTabButton.Location = new System.Drawing.Point(962, 669);
             this.CloseTabButton.MinimumSize = new System.Drawing.Size(207, 105);
             this.CloseTabButton.Name = "CloseTabButton";
             this.CloseTabButton.Size = new System.Drawing.Size(207, 105);
             this.CloseTabButton.TabIndex = 4;
             // 
+            // qrButton1
+            // 
+            this.qrButton1.Barcode = null;
+            this.qrButton1.Location = new System.Drawing.Point(925, 60);
+            this.qrButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.qrButton1.Name = "qrButton1";
+            this.qrButton1.Size = new System.Drawing.Size(240, 72);
+            this.qrButton1.TabIndex = 14;
+            this.qrButton1.Text = "qrButton1";
+            // 
             // AddNewCartridge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.qrButton1);
             this.Controls.Add(this.LocationsBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.label7);
@@ -254,5 +264,6 @@
         private System.Windows.Forms.Label label7;
         private LinearButton SaveButton;
         private AlphabetBox LocationsBox;
+        private QRButton qrButton1;
     }
 }

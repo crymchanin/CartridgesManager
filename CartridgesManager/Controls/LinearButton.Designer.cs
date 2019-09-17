@@ -56,7 +56,6 @@
             this.FlatButton.Tag = "";
             this.FlatButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.FlatButton.UseVisualStyleBackColor = false;
-            this.FlatButton.Click += new System.EventHandler(this.FlatButton_Click);
             // 
             // ButtonWithBarcode
             // 

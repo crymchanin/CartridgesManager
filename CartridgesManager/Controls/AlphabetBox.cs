@@ -49,7 +49,7 @@ namespace CartridgesManager.Controls {
 
             GuiController.ControlCallback callback = delegate (string code) {
                 ContentLayoutPanel.Controls.Clear();
-                LinearButton sender = GuiController.GetAssociatedControl(code);
+                LinearButton sender = (LinearButton)GuiController.GetAssociatedControl(code);
                 LoadContentPage?.Invoke(this, sender.GetCustomData<char[]>());
             };
 
@@ -57,13 +57,13 @@ namespace CartridgesManager.Controls {
             int index = 0;
             foreach (char[] words in alphabet) {
                 LinearButton button = new LinearButton();
-                button.ButtonText = string.Join("", words).ToUpper();
+                button.Text = string.Join("", words).ToUpper();
 
                 button.Barcode = button.RegisterControl(callback);
-                button.ButtonBackColor = Color.DarkSeaGreen;
+                button.BackColor = Color.DarkSeaGreen;
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 button.CompactMode = true;
-                button.ButtonFontSize = 9.25F;
+                button.FontSize = 9.25F;
                 button.TabIndex = index;
                 button.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
 

@@ -53,9 +53,9 @@
             this.CloseTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseTabButton.BackColor = System.Drawing.Color.White;
             this.CloseTabButton.Barcode = "";
-            this.CloseTabButton.ButtonBackColor = System.Drawing.Color.LightSkyBlue;
-            this.CloseTabButton.ButtonImage = global::CartridgesManager.Properties.Resources.remove_64;
-            this.CloseTabButton.ButtonText = "Закрыть окно";
+            this.CloseTabButton.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.CloseTabButton.Image = global::CartridgesManager.Properties.Resources.remove_64;
+            this.CloseTabButton.Text = "Закрыть окно";
             this.CloseTabButton.Location = new System.Drawing.Point(574, 213);
             this.CloseTabButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.CloseTabButton.Name = "CloseTabButton";

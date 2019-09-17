@@ -24,19 +24,19 @@ namespace CartridgesManager.Controls {
             WorkerBox.Text = SessionManager.WorkerName;
 
             GuiController.ControlCallback SessionCallback = delegate (string code) {
-                LinearButton sender = GuiController.GetAssociatedControl(code);
-                sender.ButtonChecked = !sender.ButtonChecked;
+                ICodeButton sender = GuiController.GetAssociatedControl(code);
+                sender.Checked = !sender.Checked;
             };
 
             string[] actions = DatabaseHelper.GetCartridgeActionTypes().ToArray(); // !!!!!
-            List<LinearButton> buttons = new List<LinearButton>();
+            List<QRButton> buttons = new List<QRButton>();
             int index = 0;
             foreach (string action in actions) {
-                LinearButton button = new LinearButton();
-                button.ButtonText = action;
+                QRButton button = new QRButton();
+                button.Text = action;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-                button.CompactMode = true;
+                //button.CompactMode = true;
                 button.TabIndex = index;
                 button.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
                 //button.SetCustomData(type);

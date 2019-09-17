@@ -1,5 +1,20 @@
-﻿namespace CartridgesManager.Controls {
+﻿using System;
+using System.Drawing;
+
+namespace CartridgesManager.Controls {
+
+    /// <summary>
+    /// Представляет метод, обрабатывающий событие ICodeButton.ButtonClick
+    /// </summary>
+    public delegate void CodeButtonClickEventHandler(ICodeButton sender, EventArgs e);
+
+
     public interface ICodeButton {
+
+        /// <summary>
+        /// Происходит нажатии кнопки
+        /// </summary>
+        event CodeButtonClickEventHandler ButtonClick;
 
         /// <summary>
         /// Возвращает пользовательские данные связанные с тукущим элементом управления
@@ -24,5 +39,40 @@
         /// Тип штрихкода, который будет отображен в кнопке
         /// </summary>
         CodeButtonType BarcodeType { get; }
+
+        /// <summary>
+        /// Возвращает или задает текст, связанный с этим элементом управления
+        /// </summary>
+        string Text { get; set; }
+
+        /// <summary>
+        /// Возвращает или задает изображение, отображаемое на кнопке
+        /// </summary>
+        Image Image { get; set; }
+
+        /// <summary>
+        /// Возвращает или задает цвет фона элемента управления
+        /// </summary>
+        Color BackColor { get; set; }
+
+        /// <summary>
+        /// Возвращает или задает цвет элемента управления
+        /// </summary>
+        Color ForeColor { get; set; }
+
+        /// <summary>
+        /// Возвращает или задает шрифт текста, отображаемого элементом управления
+        /// </summary>
+        Font Font { get; set; }
+
+        /// <summary>
+        /// Возвращает или задает значение отмечена ли кнопка выбранной или нет
+        /// </summary>
+        bool Checked { get; set; }
+
+        /// <summary>
+        /// Возвращает или задает цвет фона кнопки в выбранном состоянии
+        /// </summary>
+        Color CheckedBackColor { get; set; }
     }
 }

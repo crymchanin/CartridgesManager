@@ -51,7 +51,7 @@ namespace CartridgesManager.Controls {
                 });
 
             ViewCartridgesButton.Barcode = ((long)ActionsHelper.MainActions.PostOfficeInfo).ToString();
-            ViewCartridgesButton.ButtonClick += delegate (object s, EventArgs e) {
+            ViewCartridgesButton.ButtonClick += delegate (ICodeButton s, EventArgs e) {
                 // Просмотр картриджей отделения здесь
             };
 

@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="ActionsHelper.cs" />
     <Compile Include="AppHelper.cs" />
+    <Compile Include="Controls\AbstractControlDescriptionProvider.cs" />
     <Compile Include="Controls\BarcodeButtonCollection.cs" />
     <Compile Include="CartridgeInfo.cs" />
     <Compile Include="ComListener.cs" />
@@ -94,7 +95,7 @@
       <DependentUpon>LinearButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BaseCodeButton.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ICodeButton.cs" />
     <Compile Include="Controls\MainControl.cs">
@@ -110,7 +111,7 @@
       <DependentUpon>PaginationControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\QRButton.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ServiceCartridge.cs">
       <SubType>UserControl</SubType>
@@ -156,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PaginationControl.resx">
       <DependentUpon>PaginationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QRButton.resx">
+      <DependentUpon>QRButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ServiceCartridge.resx">
       <DependentUpon>ServiceCartridge.cs</DependentUpon>

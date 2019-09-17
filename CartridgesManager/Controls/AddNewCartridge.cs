@@ -35,16 +35,8 @@ namespace CartridgesManager.Controls {
             SaveButton.Barcode = SaveButton.RegisterControl((c) => this.NavigateToMainPage());
 
             GuiController.ControlCallback SessionCallback = delegate (string code) {
-                LinearButton sender = GuiController.GetAssociatedControl(code);
-                sender.ButtonBackColor = Color.Green;
-                foreach (Control ctrl in sender.Parent.Controls) {
-                    if (ctrl is LinearButton) {
-                        LinearButton child = ctrl as LinearButton;
-                        if (child.Barcode != code && child.ButtonBackColor == Color.Green) {
-                            child.ButtonBackColor = Color.DimGray;
-                        }
-                    }
-                }
+                ICodeButton sender = GuiController.GetAssociatedControl(code);
+                sender.Checked = !sender.Checked;
             };
 
             string[] types = DatabaseHelper.GetCartridgeTypes().ToArray();
@@ -52,7 +44,7 @@ namespace CartridgesManager.Controls {
             int index = 0;
             foreach (string type in types) {
                 LinearButton button = new LinearButton();
-                button.ButtonText = type;
+                button.Text = type;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 button.CompactMode = true;
@@ -70,7 +62,7 @@ namespace CartridgesManager.Controls {
             index = 0;
             foreach (string model in models) {
                 LinearButton button = new LinearButton();
-                button.ButtonText = model;
+                button.Text = model;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 button.CompactMode = true;
@@ -90,7 +82,7 @@ namespace CartridgesManager.Controls {
                 index = 0;
                 foreach (string location in locations) {
                     LinearButton button = new LinearButton();
-                    button.ButtonText = location;
+                    button.Text = location;
                     button.Barcode = button.RegisterControl(SessionCallback);
                     button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                     button.CompactMode = true;
@@ -102,13 +94,13 @@ namespace CartridgesManager.Controls {
                     index++;
                 }
                 LinearButton backButton = new LinearButton();
-                backButton.ButtonText = "Вернуться назад";
-                backButton.ButtonImage = Properties.Resources.back_64;
+                backButton.Text = "Вернуться назад";
+                backButton.Image = Properties.Resources.back_64;
                 backButton.Barcode = backButton.RegisterControl((c) => sender.LoadMainPage());
-                backButton.ButtonBackColor = Color.LightSkyBlue;
+                backButton.BackColor = Color.LightSkyBlue;
                 backButton.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 backButton.CompactMode = true;
-                backButton.ButtonFontSize = 9.25F;
+                backButton.FontSize = 9.25F;
                 backButton.TabIndex = index;
                 backButton.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
                 buttons.Add(backButton);

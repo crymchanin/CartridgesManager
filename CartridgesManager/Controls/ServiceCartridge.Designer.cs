@@ -40,7 +40,6 @@
             this.CloseTabButton = new CartridgesManager.Controls.LinearButton();
             this.ContentLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
-            this.paginationControl1 = new CartridgesManager.Controls.PaginationControl();
             this.SuspendLayout();
             // 
             // label4
@@ -188,15 +187,12 @@
             // SaveButton
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.BackColor = System.Drawing.Color.White;
             this.SaveButton.Barcode = "";
-            this.SaveButton.ButtonBackColor = System.Drawing.Color.MediumAquamarine;
-            this.SaveButton.ButtonChecked = false;
-            this.SaveButton.ButtonCheckedBackColor = System.Drawing.Color.Green;
-            this.SaveButton.ButtonFontSize = 14.25F;
-            this.SaveButton.ButtonImage = global::CartridgesManager.Properties.Resources.save_64;
-            this.SaveButton.ButtonText = "Сохранить данные";
+            this.SaveButton.Checked = false;
+            this.SaveButton.CheckedBackColor = System.Drawing.Color.Green;
             this.SaveButton.CompactMode = false;
+            this.SaveButton.FontSize = 14.25F;
+            this.SaveButton.Image = global::CartridgesManager.Properties.Resources.save_64;
             this.SaveButton.Location = new System.Drawing.Point(971, 342);
             this.SaveButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.SaveButton.Name = "SaveButton";
@@ -206,15 +202,12 @@
             // CloseTabButton
             // 
             this.CloseTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseTabButton.BackColor = System.Drawing.Color.White;
             this.CloseTabButton.Barcode = "";
-            this.CloseTabButton.ButtonBackColor = System.Drawing.Color.LightSkyBlue;
-            this.CloseTabButton.ButtonChecked = false;
-            this.CloseTabButton.ButtonCheckedBackColor = System.Drawing.Color.Green;
-            this.CloseTabButton.ButtonFontSize = 14.25F;
-            this.CloseTabButton.ButtonImage = global::CartridgesManager.Properties.Resources.remove_64;
-            this.CloseTabButton.ButtonText = "Закрыть окно";
+            this.CloseTabButton.Checked = false;
+            this.CloseTabButton.CheckedBackColor = System.Drawing.Color.Green;
             this.CloseTabButton.CompactMode = false;
+            this.CloseTabButton.FontSize = 14.25F;
+            this.CloseTabButton.Image = global::CartridgesManager.Properties.Resources.remove_64;
             this.CloseTabButton.Location = new System.Drawing.Point(971, 563);
             this.CloseTabButton.MinimumSize = new System.Drawing.Size(207, 215);
             this.CloseTabButton.Name = "CloseTabButton";
@@ -228,7 +221,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ContentLayoutPanel.Location = new System.Drawing.Point(17, 245);
             this.ContentLayoutPanel.Name = "ContentLayoutPanel";
-            this.ContentLayoutPanel.Size = new System.Drawing.Size(929, 16);
+            this.ContentLayoutPanel.Size = new System.Drawing.Size(929, 533);
             this.ContentLayoutPanel.TabIndex = 0;
             // 
             // label8
@@ -241,21 +234,11 @@
             this.label8.TabIndex = 24;
             this.label8.Text = "Выполненные работы";
             // 
-            // paginationControl1
-            // 
-            this.paginationControl1.BackColor = System.Drawing.Color.White;
-            this.paginationControl1.Location = new System.Drawing.Point(17, 278);
-            this.paginationControl1.Name = "paginationControl1";
-            this.paginationControl1.NavigationPanelHeight = 150;
-            this.paginationControl1.Size = new System.Drawing.Size(800, 500);
-            this.paginationControl1.TabIndex = 25;
-            // 
             // ServiceCartridge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.paginationControl1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.ContentLayoutPanel);
             this.Controls.Add(this.SaveButton);
@@ -301,6 +284,5 @@
         private LinearButton CloseTabButton;
         private System.Windows.Forms.FlowLayoutPanel ContentLayoutPanel;
         private System.Windows.Forms.Label label8;
-        private PaginationControl paginationControl1;
     }
 }

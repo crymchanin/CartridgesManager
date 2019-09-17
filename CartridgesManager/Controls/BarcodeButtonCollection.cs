@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 
 namespace CartridgesManager.Controls {
-    public class CodeButtonCollection : IList<BaseCodeButton>, ICollection<BaseCodeButton>, IEnumerable<BaseCodeButton> {
+    public class CodeButtonCollection : IList<ICodeButton>, ICollection<ICodeButton>, IEnumerable<ICodeButton> {
 
         private ArrayList _buttonList = new ArrayList();
 
@@ -12,7 +12,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="index">Отсчитываемый от нуля индекс элемента, который требуется возвратить или задать.</param>
         /// <returns>Элемент, расположенный по указанному индексу</returns>
-        public BaseCodeButton this[int index] { get => (BaseCodeButton)_buttonList[index]; set => _buttonList[index] = value; }
+        public ICodeButton this[int index] { get => (ICodeButton)_buttonList[index]; set => _buttonList[index] = value; }
 
         /// <summary>
         /// Возвращает число элементов, содержащихся в CodeButtonCollection
@@ -27,8 +27,8 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Добавляет объект в конец очереди CodeButtonCollection
         /// </summary>
-        /// <param name="item">Объект BaseCodeButton, добавляемый в конец коллекции CodeButtonCollection. Допускается значение null</param>
-        public void Add(BaseCodeButton item) {
+        /// <param name="item">Объект ICodeButton, добавляемый в конец коллекции CodeButtonCollection. Допускается значение null</param>
+        public void Add(ICodeButton item) {
             _buttonList.Add(item);
         }
 
@@ -42,9 +42,9 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Определяет, входит ли элемент в коллекцию CodeButtonCollection
         /// </summary>
-        /// <param name="item">Объект BaseCodeButton, который требуется найти в коллекции CodeButtonCollection. Допускается значение null</param>
+        /// <param name="item">Объект ICodeButton, который требуется найти в коллекции CodeButtonCollection. Допускается значение null</param>
         /// <returns></returns>
-        public bool Contains(BaseCodeButton item) {
+        public bool Contains(ICodeButton item) {
             return _buttonList.Contains(item);
         }
 
@@ -53,7 +53,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <param name="array">Одномерный массив CodeButtonCollection, в который копируются элементы из интерфейса . Массив CodeButtonCollection должен иметь индексацию, начинающуюся с нуля</param>
         /// <param name="arrayIndex">Отсчитываемый от нуля индекс в массиве array, указывающий начало копирования</param>
-        public void CopyTo(BaseCodeButton[] array, int arrayIndex) {
+        public void CopyTo(ICodeButton[] array, int arrayIndex) {
             _buttonList.CopyTo(array, arrayIndex);
         }
 
@@ -61,16 +61,16 @@ namespace CartridgesManager.Controls {
         /// Возвращает перечислитель для всего CodeButtonCollection
         /// </summary>
         /// <returns>System.Collections.IEnumerator Для всего CodeButtonCollection</returns>
-        public IEnumerator<BaseCodeButton> GetEnumerator() {
-            return (IEnumerator<BaseCodeButton>)((IEnumerable)this).GetEnumerator();
+        public IEnumerator<ICodeButton> GetEnumerator() {
+            return (IEnumerator<ICodeButton>)((IEnumerable)this).GetEnumerator();
         }
 
         /// <summary>
-        /// Осуществляет поиск указанного объекта BaseCodeButton и возвращает отсчитываемый от нуля индекс первого вхождения в коллекцию CodeButtonCollection
+        /// Осуществляет поиск указанного объекта ICodeButton и возвращает отсчитываемый от нуля индекс первого вхождения в коллекцию CodeButtonCollection
         /// </summary>
-        /// <param name="item">Объект BaseCodeButton, который требуется найти в коллекции CodeButtonCollection</param>
+        /// <param name="item">Объект ICodeButton, который требуется найти в коллекции CodeButtonCollection</param>
         /// <returns>Индекс (с нуля) первого вхождения параметра item, если оно найдено в коллекции CodeButtonCollection; в противном случае -1</returns>
-        public int IndexOf(BaseCodeButton item) {
+        public int IndexOf(ICodeButton item) {
             return _buttonList.IndexOf(item);
         }
 
@@ -78,17 +78,17 @@ namespace CartridgesManager.Controls {
         /// Вставляет элемент в коллекцию CodeButtonCollection по указанному индексу
         /// </summary>
         /// <param name="index">Отсчитываемый от нуля индекс, по которому следует вставить элемент item</param>
-        /// <param name="item">Вставляемый объект BaseCodeButton. Допускается значение null</param>
-        public void Insert(int index, BaseCodeButton item) {
+        /// <param name="item">Вставляемый объект ICodeButton. Допускается значение null</param>
+        public void Insert(int index, ICodeButton item) {
             _buttonList.Insert(index, item);
         }
 
         /// <summary>
         /// Удаляет первое вхождение указанного объекта из коллекции CodeButtonCollection
         /// </summary>
-        /// <param name="item">Элемент BaseCodeButton, который требуется удалить из CodeButtonCollection</param>
+        /// <param name="item">Элемент ICodeButton, который требуется удалить из CodeButtonCollection</param>
         /// <returns></returns>
-        public bool Remove(BaseCodeButton item) {
+        public bool Remove(ICodeButton item) {
             int index = IndexOf(item);
             if (index >= 0) {
                 _buttonList.RemoveAt(index);

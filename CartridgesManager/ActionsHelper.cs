@@ -60,7 +60,7 @@ namespace CartridgesManager {
         /// <returns></returns>
         public static Type GetCodeType(long code) {
             Type thisType = typeof(ActionsHelper);
-            Type type = Assembly.GetExecutingAssembly().GetTypes().
+            Type type = thisType.GetNestedTypes().
                 Where(t => t.IsEnum && Enum.IsDefined(t, code)).FirstOrDefault();
 
             return type;
