@@ -103,6 +103,8 @@ namespace CartridgesManager {
                 Log = new Log(Path.Combine(CurrentDirectory, ProductName + ".log")) { InsertDate = true, AutoCompress = true };
                 Log.ExceptionThrownEvent += (e) => MessageBox.Show(e.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                FontFactory.AddFont(Properties.Resources.Century_Gothic);
+
                 return true;
             }
             catch (Exception ex) {

@@ -43,7 +43,7 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Возвращает или задает текст, связанный с этим элементом управления
         /// </summary>
-        string Text { get; set; }
+        string ButtonText { get; set; }
 
         /// <summary>
         /// Возвращает или задает изображение, отображаемое на кнопке
@@ -53,17 +53,17 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Возвращает или задает цвет фона элемента управления
         /// </summary>
-        Color BackColor { get; set; }
+        Color ButtonBackColor { get; set; }
 
         /// <summary>
         /// Возвращает или задает цвет элемента управления
         /// </summary>
-        Color ForeColor { get; set; }
+        Color ButtonForeColor { get; set; }
 
         /// <summary>
         /// Возвращает или задает шрифт текста, отображаемого элементом управления
         /// </summary>
-        Font Font { get; set; }
+        Font ButtonFont { get; set; }
 
         /// <summary>
         /// Возвращает или задает значение отмечена ли кнопка выбранной или нет

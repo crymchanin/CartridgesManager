@@ -34,8 +34,8 @@ namespace CartridgesManager.Controls {
                 int index = 0;
                 foreach (string user in AppHelper.Configuration.Users) {
                     LinearButton button = new LinearButton();
-                    button.Text = user;
-                    button.BackColor = Color.DimGray;
+                    button.ButtonText = user;
+                    button.ButtonBackColor = Color.DimGray;
                     button.Image = Properties.Resources.sad_64;
                     button.Barcode = button.RegisterControl(SessionCallback);
                     button.Anchor = AnchorStyles.Left | AnchorStyles.Top;

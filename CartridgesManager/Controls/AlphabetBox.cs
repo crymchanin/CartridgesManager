@@ -57,10 +57,10 @@ namespace CartridgesManager.Controls {
             int index = 0;
             foreach (char[] words in alphabet) {
                 LinearButton button = new LinearButton();
-                button.Text = string.Join("", words).ToUpper();
+                button.ButtonText = string.Join("", words).ToUpper();
 
                 button.Barcode = button.RegisterControl(callback);
-                button.BackColor = Color.DarkSeaGreen;
+                button.ButtonBackColor = Color.DarkSeaGreen;
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 button.CompactMode = true;
                 button.FontSize = 9.25F;

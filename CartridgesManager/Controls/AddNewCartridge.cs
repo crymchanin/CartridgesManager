@@ -44,7 +44,7 @@ namespace CartridgesManager.Controls {
             int index = 0;
             foreach (string type in types) {
                 LinearButton button = new LinearButton();
-                button.Text = type;
+                button.ButtonText = type;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 button.CompactMode = true;
@@ -62,7 +62,7 @@ namespace CartridgesManager.Controls {
             index = 0;
             foreach (string model in models) {
                 LinearButton button = new LinearButton();
-                button.Text = model;
+                button.ButtonText = model;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 button.CompactMode = true;
@@ -82,7 +82,7 @@ namespace CartridgesManager.Controls {
                 index = 0;
                 foreach (string location in locations) {
                     LinearButton button = new LinearButton();
-                    button.Text = location;
+                    button.ButtonText = location;
                     button.Barcode = button.RegisterControl(SessionCallback);
                     button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                     button.CompactMode = true;
@@ -94,10 +94,10 @@ namespace CartridgesManager.Controls {
                     index++;
                 }
                 LinearButton backButton = new LinearButton();
-                backButton.Text = "Вернуться назад";
+                backButton.ButtonText = "Вернуться назад";
                 backButton.Image = Properties.Resources.back_64;
                 backButton.Barcode = backButton.RegisterControl((c) => sender.LoadMainPage());
-                backButton.BackColor = Color.LightSkyBlue;
+                backButton.ButtonBackColor = Color.LightSkyBlue;
                 backButton.Anchor = AnchorStyles.Left | AnchorStyles.Top;
                 backButton.CompactMode = true;
                 backButton.FontSize = 9.25F;

@@ -33,10 +33,11 @@ namespace CartridgesManager.Controls {
             int index = 0;
             foreach (string action in actions) {
                 QRButton button = new QRButton();
-                button.Text = action;
+                button.ButtonText = action;
                 button.Barcode = button.RegisterControl(SessionCallback);
                 button.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-                //button.CompactMode = true;
+                button.ButtonForeColor = Color.White;
+                button.ButtonFont = new Font(FontFactory.GetFontFamilyByName("Century Gothic"), 12.25F, FontStyle.Bold);
                 button.TabIndex = index;
                 button.Margin = new Padding(0, 0, ContentMargins, ContentMargins);
                 //button.SetCustomData(type);

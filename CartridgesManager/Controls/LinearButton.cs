@@ -1,12 +1,11 @@
 ﻿using BarcodeLib;
-using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 
 namespace CartridgesManager.Controls {
-    public partial class LinearButton : BaseCodeButton {
+    public partial class LinearButton : UserControl, ICodeButton {
 
         private string _barcode = string.Empty;
         private object _customData;
@@ -20,7 +19,7 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Происходит при нажатии кнопки
         /// </summary>
-        public override event CodeButtonClickEventHandler ButtonClick;
+        public event CodeButtonClickEventHandler ButtonClick;
 
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace CartridgesManager.Controls {
         /// </summary>
         public LinearButton() : base() {
             InitializeComponent();
-            BackColor = Color.DimGray;
 
             FlatButton.Click += (s, e) => ButtonClick?.Invoke(this, e);
         }
@@ -38,7 +36,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <typeparam name="T">Тип возвращаемых данных</typeparam>
         /// <returns></returns>
-        public override T GetCustomData<T>() {
+        public T GetCustomData<T>() {
             return (T)_customData;
         }
 
@@ -47,7 +45,7 @@ namespace CartridgesManager.Controls {
         /// </summary>
         /// <typeparam name="T">Тип связываемых данных</typeparam>
         /// <param name="customData">Пользовательские данные</param>
-        public override void SetCustomData<T>(T customData) {
+        public void SetCustomData<T>(T customData) {
             _customData = customData;
         }
 
@@ -101,13 +99,13 @@ namespace CartridgesManager.Controls {
         [Description("Штрихкод кнопки")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override string Barcode {
+        public string Barcode {
             get {
                 return _barcode;
             }
             set {
                 _barcode = value;
-                if (!string.IsNullOrEmpty(_barcode.Trim())) {
+                if (!string.IsNullOrEmpty(_barcode)) {
                     Barcode barcode = new Barcode {
                         Alignment = AlignmentPositions.CENTER,
                         Width = BarcodeBox.Width,
@@ -123,7 +121,19 @@ namespace CartridgesManager.Controls {
         /// <summary>
         /// Тип штрихкода, который будет отображен в кнопке
         /// </summary>
-        public override CodeButtonType BarcodeType => CodeButtonType.LinearCode;
+        public CodeButtonType BarcodeType => CodeButtonType.LinearCode;
+
+        /// <summary>
+        /// Возвращает или задает изображение, отображаемое в кнопке
+        /// </summary>
+        [Category("Appearance")]
+        [Description("Изображение отображаемое в кнопке")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public Image Image {
+            get => FlatButton.Image;
+            set => FlatButton.Image = value;
+        }
 
         /// <summary>
         /// Возвращает или задает текст, связанный с кнопкой
@@ -132,7 +142,8 @@ namespace CartridgesManager.Controls {
         [Description("Текст кнопки")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override string Text {
+        [EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design", "System.Drawing.Design.UITypeEditor")]
+        public string ButtonText {
             get {
                 return FlatButton.Text;
             }
@@ -142,33 +153,13 @@ namespace CartridgesManager.Controls {
         }
 
         /// <summary>
-        /// Возвращает или задает изображение, отображаемое в кнопке
-        /// </summary>
-        [Category("Appearance")]
-        [Description("Изображение отображаемое в кнопке")]
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override Image Image {
-            get => FlatButton.Image;
-            set => FlatButton.Image = value;
-        }
-
-        /// <summary>
-        /// Задает изображение, отображаемое на кнопке
-        /// </summary>
-        /// <param name="value"></param>
-        private void SetImage(Image value) {
-            FlatButton.Image = value;
-        }
-
-        /// <summary>
         /// Возвращает или задает цвет фона кнопки
         /// </summary>
         [Category("Appearance")]
         [Description("Цвет фона кнопки")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override Color BackColor {
+        public Color ButtonBackColor {
             get {
                 return _backColor;
             }
@@ -186,26 +177,9 @@ namespace CartridgesManager.Controls {
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue(typeof(Color), "White")]
-        public override Color ForeColor {
+        public Color ButtonForeColor {
             get => FlatButton.ForeColor;
             set => FlatButton.ForeColor = value;
-        }
-
-        /// <summary>
-        /// Возвращает или задает цвет фона кнопки в выбранном состоянии
-        /// </summary>
-        [Category("Appearance")]
-        [Description("Цвет фона кнопки в выбранном состоянии")]
-        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override Color CheckedBackColor {
-            get => _checkedBackColor;
-            set {
-                _checkedBackColor = value;
-                if (_checked) {
-                    FlatButton.BackColor = _checkedBackColor;
-                }
-            }
         }
 
         /// <summary>
@@ -215,9 +189,26 @@ namespace CartridgesManager.Controls {
         [Description("Шрифт, используемый для отображения текста на элементе управления.")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override Font Font {
+        public Font ButtonFont {
             get => FlatButton.Font;
             set => FlatButton.Font = value;
+        }
+
+        /// <summary>
+        /// Возвращает или задает цвет фона кнопки в выбранном состоянии
+        /// </summary>
+        [Category("Appearance")]
+        [Description("Цвет фона кнопки в выбранном состоянии")]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public Color CheckedBackColor {
+            get => _checkedBackColor;
+            set {
+                _checkedBackColor = value;
+                if (_checked) {
+                    FlatButton.BackColor = _checkedBackColor;
+                }
+            }
         }
 
         /// <summary>
@@ -229,7 +220,7 @@ namespace CartridgesManager.Controls {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public float FontSize {
             get => FlatButton.Font.Size;
-            set => FlatButton.Font = new Font(Font.FontFamily, value, Font.Style, Font.Unit, Font.GdiCharSet);
+            set => FlatButton.Font = new Font(FlatButton.Font.FontFamily, value, FlatButton.Font.Style, FlatButton.Font.Unit, FlatButton.Font.GdiCharSet);
         }
 
         /// <summary>
@@ -239,7 +230,7 @@ namespace CartridgesManager.Controls {
         [Description("Определяет отмечена ли кнопка выбранной или нет")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public override bool Checked {
+        public bool Checked {
             get {
                 return _checked;
             }
@@ -248,5 +239,32 @@ namespace CartridgesManager.Controls {
                 FlatButton.BackColor = (_checked) ? CheckedBackColor : _backColor;
             }
         }
+
+
+        #region Скрытие неиспользуемых свойств
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Color BackColor { get => base.BackColor; set => base.BackColor = value; }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override string Text { get => base.Text; set => base.Text = value; }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Font Font { get => base.Font; set => base.Font = value; }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Color ForeColor { get => base.ForeColor; set => base.ForeColor = value; }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Image BackgroundImage { get => base.BackgroundImage; set => base.BackgroundImage = value; }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override ImageLayout BackgroundImageLayout { get => base.BackgroundImageLayout; set => base.BackgroundImageLayout = value; }
+        #endregion
     }
 }

@@ -36,10 +36,10 @@
             this.CommentBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ModelBox = new System.Windows.Forms.TextBox();
-            this.SaveButton = new CartridgesManager.Controls.LinearButton();
-            this.CloseTabButton = new CartridgesManager.Controls.LinearButton();
             this.ContentLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
+            this.SaveButton = new CartridgesManager.Controls.LinearButton();
+            this.CloseTabButton = new CartridgesManager.Controls.LinearButton();
             this.SuspendLayout();
             // 
             // label4
@@ -184,36 +184,6 @@
             this.ModelBox.TabStop = false;
             this.ModelBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // SaveButton
-            // 
-            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Barcode = "";
-            this.SaveButton.Checked = false;
-            this.SaveButton.CheckedBackColor = System.Drawing.Color.Green;
-            this.SaveButton.CompactMode = false;
-            this.SaveButton.FontSize = 14.25F;
-            this.SaveButton.Image = global::CartridgesManager.Properties.Resources.save_64;
-            this.SaveButton.Location = new System.Drawing.Point(971, 342);
-            this.SaveButton.MinimumSize = new System.Drawing.Size(207, 215);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(207, 215);
-            this.SaveButton.TabIndex = 2;
-            // 
-            // CloseTabButton
-            // 
-            this.CloseTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseTabButton.Barcode = "";
-            this.CloseTabButton.Checked = false;
-            this.CloseTabButton.CheckedBackColor = System.Drawing.Color.Green;
-            this.CloseTabButton.CompactMode = false;
-            this.CloseTabButton.FontSize = 14.25F;
-            this.CloseTabButton.Image = global::CartridgesManager.Properties.Resources.remove_64;
-            this.CloseTabButton.Location = new System.Drawing.Point(971, 563);
-            this.CloseTabButton.MinimumSize = new System.Drawing.Size(207, 215);
-            this.CloseTabButton.Name = "CloseTabButton";
-            this.CloseTabButton.Size = new System.Drawing.Size(207, 215);
-            this.CloseTabButton.TabIndex = 3;
-            // 
             // ContentLayoutPanel
             // 
             this.ContentLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -233,6 +203,42 @@
             this.label8.Size = new System.Drawing.Size(180, 18);
             this.label8.TabIndex = 24;
             this.label8.Text = "Выполненные работы";
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.Barcode = "";
+            this.SaveButton.ButtonBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.SaveButton.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveButton.ButtonText = "Сохранить";
+            this.SaveButton.Checked = false;
+            this.SaveButton.CheckedBackColor = System.Drawing.Color.Green;
+            this.SaveButton.CompactMode = false;
+            this.SaveButton.FontSize = 14.25F;
+            this.SaveButton.Image = global::CartridgesManager.Properties.Resources.save_64;
+            this.SaveButton.Location = new System.Drawing.Point(971, 342);
+            this.SaveButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(207, 215);
+            this.SaveButton.TabIndex = 2;
+            // 
+            // CloseTabButton
+            // 
+            this.CloseTabButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseTabButton.Barcode = "";
+            this.CloseTabButton.ButtonBackColor = System.Drawing.Color.LightSkyBlue;
+            this.CloseTabButton.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseTabButton.ButtonText = "Закрыть окно";
+            this.CloseTabButton.Checked = false;
+            this.CloseTabButton.CheckedBackColor = System.Drawing.Color.Green;
+            this.CloseTabButton.CompactMode = false;
+            this.CloseTabButton.FontSize = 14.25F;
+            this.CloseTabButton.Image = global::CartridgesManager.Properties.Resources.remove_64;
+            this.CloseTabButton.Location = new System.Drawing.Point(971, 563);
+            this.CloseTabButton.MinimumSize = new System.Drawing.Size(207, 215);
+            this.CloseTabButton.Name = "CloseTabButton";
+            this.CloseTabButton.Size = new System.Drawing.Size(207, 215);
+            this.CloseTabButton.TabIndex = 3;
             // 
             // ServiceCartridge
             // 

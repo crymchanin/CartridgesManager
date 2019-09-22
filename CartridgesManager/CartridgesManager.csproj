@@ -68,7 +68,6 @@
   <ItemGroup>
     <Compile Include="ActionsHelper.cs" />
     <Compile Include="AppHelper.cs" />
-    <Compile Include="Controls\AbstractControlDescriptionProvider.cs" />
     <Compile Include="Controls\BarcodeButtonCollection.cs" />
     <Compile Include="CartridgeInfo.cs" />
     <Compile Include="ComListener.cs" />
@@ -93,9 +92,6 @@
     </Compile>
     <Compile Include="Controls\LinearButton.Designer.cs">
       <DependentUpon>LinearButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\BaseCodeButton.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ICodeButton.cs" />
     <Compile Include="Controls\MainControl.cs">
@@ -132,6 +128,7 @@
       <DependentUpon>UserSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="FontFactory.cs" />
     <Compile Include="GuiController.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

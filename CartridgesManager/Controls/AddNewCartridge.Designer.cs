@@ -39,7 +39,6 @@
             this.LocationsBox = new CartridgesManager.Controls.AlphabetBox();
             this.SaveButton = new CartridgesManager.Controls.LinearButton();
             this.CloseTabButton = new CartridgesManager.Controls.LinearButton();
-            this.qrButton1 = new CartridgesManager.Controls.QRButton();
             this.SuspendLayout();
             // 
             // CodeBox
@@ -207,22 +206,11 @@
             this.CloseTabButton.Size = new System.Drawing.Size(207, 105);
             this.CloseTabButton.TabIndex = 4;
             // 
-            // qrButton1
-            // 
-            this.qrButton1.Barcode = null;
-            this.qrButton1.Location = new System.Drawing.Point(925, 60);
-            this.qrButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.qrButton1.Name = "qrButton1";
-            this.qrButton1.Size = new System.Drawing.Size(240, 72);
-            this.qrButton1.TabIndex = 14;
-            this.qrButton1.Text = "qrButton1";
-            // 
             // AddNewCartridge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.qrButton1);
             this.Controls.Add(this.LocationsBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.label7);
@@ -264,6 +252,5 @@
         private System.Windows.Forms.Label label7;
         private LinearButton SaveButton;
         private AlphabetBox LocationsBox;
-        private QRButton qrButton1;
     }
 }
